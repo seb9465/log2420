@@ -131,10 +131,11 @@ footer{
     background-color: rgba(255,255,255,0.3);
 }
 
-#copyrightCRCT, #copyrightThermfact {
+#copyrightCRCT, #copyrightThermfact, #modifDate, #appName {
     position: absolute;
     font-family: "Arial";
     font-size: 11px;
+    margin: 2px 2px 2px 2px;
 }
 
 #copyrightCRCT {
@@ -143,4 +144,14 @@ footer{
 
 #copyrightThermfact{
     top: 0;                         /*Positionne le texte au top du footer.*/
+}
+
+#modifDate {
+    right: 0;
+    bottom: 0;
+}
+
+#appName {
+    top: 0;
+    right: 0;
 }
