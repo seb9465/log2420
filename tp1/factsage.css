@@ -128,10 +128,9 @@ header img {
 
 /*----------------------------------------------------CORPS----------------------------------------------------*/
 
-.corps {
+#corps {
     width: 84.5vw;
     height: 74.5vh;
-    background-color: red;
     float: right;
     margin-top: 0.5vh;
 }
