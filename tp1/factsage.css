@@ -17,7 +17,7 @@ header {
     border-radius: 5px;
 }
 
-header p {                              /*Positioné en haut à droite.*/
+header a {                              /*Positioné en haut à droite.*/
 	text-shadow: 0px 0px 2px;
 	float: right;
     margin-top: 1vh;
@@ -131,10 +131,13 @@ footer{
     background-color: rgba(255,255,255,0.3);
 }
 
-#copyrightCRCT, #copyrightThermfact, #modifDate, #appName {
-    position: absolute;
+#copyrightCRCT, #copyrightThermfact, #modifDate, #appName, header a {
     font-family: "Arial";
     font-size: 11px;
+}
+
+#copyrightCRCT, #copyrightThermfact, #modifDate, #appName {
+    position: absolute;
     margin: 2px 2px 2px 2px;
 }
 
