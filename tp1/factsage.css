@@ -1,3 +1,11 @@
+header a, .dropdown-content a, .vertical-menu a, #copyrightCRCT, #copyrightThermfact, #modifDate, #appName{
+    font-family: "Arial";
+}
+
+#copyrightCRCT, #copyrightThermfact, #modifDate, #appName, header a {
+    font-size: 11px;
+}
+
 body {
     width:99vw;                         /*Fixe les dimensions de la page en entier.*/
     height:99vh;                        /*Fixe de fixer les dimensions de la page en entier.*/
@@ -103,7 +111,6 @@ header img {
     border-radius: 5px;
     text-align: center;
     font-weight: bold;
-    font-family: "Courier New";
 }
 
 .vertical-menu a:hover {
@@ -119,6 +126,16 @@ header img {
     vertical-align: text-top;
 }
 
+/*----------------------------------------------------CORPS----------------------------------------------------*/
+
+.corps {
+    width: 84.5vw;
+    height: 74.5vh;
+    background-color: red;
+    float: right;
+    margin-top: 0.5vh;
+}
+
 /*----------------------------------------------------FOOTER----------------------------------------------------*/
 
 footer{
@@ -129,11 +146,6 @@ footer{
     box-shadow: 0px -5px 16px 0px rgba(0,0,0,0.5);
     border-radius: 5px;
     background-color: rgba(255,255,255,0.3);
-}
-
-#copyrightCRCT, #copyrightThermfact, #modifDate, #appName, header a {
-    font-family: "Arial";
-    font-size: 11px;
 }
 
 #copyrightCRCT, #copyrightThermfact, #modifDate, #appName {
