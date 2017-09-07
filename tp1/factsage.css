@@ -79,7 +79,10 @@ header img {
     display: block;
 }
 
-.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+    border-radius: 5px;
+}
 
 .dropdown:hover .dropdown-content {
     display: block;
@@ -168,4 +171,8 @@ footer{
 #appName {
     top: 0;
     right: 0;
+}
+
+#corps {
+    overflow : auto;
 }
