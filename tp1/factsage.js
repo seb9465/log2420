@@ -1,4 +1,4 @@
-function loadDoc(){
+function loadDoc(url){
     var xhttp = new XMLHttpRequest();
     
     xhttp.onreadystatechange = function(){
@@ -6,6 +6,7 @@ function loadDoc(){
             document.getElementById('corps').innerHTML = this.responseText;
         }
     };
-    xhttp.open("GET", "fs_general.php", true);
+
+    xhttp.open("GET", url, true);
     xhttp.send();
 }
