@@ -42,7 +42,7 @@ header img {
 #horizontal_menu {                      /*La section contenant l'ensemble des boutons.*/
     float: right;
     width: 85vw;
-    margin-top : 1vh;                   /*Permet de décoller la barre de boutons du shadow du header.*/
+    margin-top : 0vh;                   /*Permet de décoller la barre de boutons du shadow du header.*/
 }
 
 .dropbtn {
@@ -54,6 +54,7 @@ header img {
     border-radius: 5px;                 /*Rounded corners.*/
     width: 20.5vw;
     height: 4vh;
+    max-height:40px;
 }
 
 .dropdown {
@@ -94,15 +95,24 @@ header img {
 }
 
 /*----------------------------------------------------MENU VERTICAL DE GAUCHE----------------------------------------------------*/
+.vertical-menu-top-margin {
+    background-color: red;
+    height: 5vh;
+    max-height: 40px;
+    width: 10px;
+    top:0;
+    
+    
+}
 
 .vertical-menu {
     float: left;                /*Permet d'avoir le menu vertical complètement à gauche des autres éléments.*/
     width: 14vw;
-    height: 75vh;
-    margin-top:5vh;
+    height: 70vh;
     overflow: auto;             /* Permet de scroll-down dans la barre verticale de menu.*/
     box-shadow: 2px 0px 16px 0px rgba(0,0,0,0.5); 
     background-color:rgba(0,0,0,0.2);
+    border-radius: 5px;
 }
 
 .vertical-menu a {
@@ -110,6 +120,8 @@ header img {
     color: black;
     display: block;
     margin-bottom: 10px;	/*Permet d'espacer chacun des blocs de texte.*/
+    margin-right: 5px;
+    margin-left: 5px;
     padding: 12px;
     text-decoration: none;
     border-radius: 5px;
