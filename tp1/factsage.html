@@ -2,7 +2,7 @@
 <html>
 <head>
 	<link rel="stylesheet" href="factsage.css">
-	<script src="factsage.js"> </script>
+
 <title>Factsage 7.1</title>
 </head>
 <body>
@@ -15,61 +15,61 @@
             <div class = "vertical-menu-top-margin">
             </div>
 			<nav class = "vertical-menu">
-					<a>Introduction</a>
-					<a>Database Documentation</a>
-					<a>FactSage Applications</a>
-					<a>Posters and Publication</a>
-					<a>Conferences and Workshops</a>
-					<a>Ordering and Representatives</a>
-					<a>Phase Diagrams & Documentation Download</a>
-					<a>FactSage Products</a>
-					<a>CRCT Clients</a>
-					<a>Fact-Web</a>
-					<a>FactSage 7.1 ~News~</a>
-					<a>FactSage 7.0 ~News~</a>
-					<a>Download Service</a>
-					<a>Installation Instructions</a>
+					<a href = "http://www.crct.polymtl.ca/factsage/fs_general.php">Introduction</a>
+					<a href = "http://www.crct.polymtl.ca/fact/documentation/">Database Documentation</a>
+					<a href = "http://www.crct.polymtl.ca/factsage/FactSage_Applications/">FactSage Applications</a>
+					<a href = "http://www.crct.polymtl.ca/factsage/fs_publications.php">Posters and Publication</a>
+					<a href = "http://www.crct.polymtl.ca/conferences.php">Conferences and Workshops</a>
+					<a href = "http://www.crct.polymtl.ca/fact/test2004_main.php">Ordering and Representatives</a>
+					<a href = "http://www.crct.polymtl.ca/fact/download.php">Phase Diagrams & Documentation Download</a>
+					<a href = "http://www.crct.polymtl.ca/factsage/fs_family.php">FactSage Products</a>
+					<a href = "http://www.crct.polymtl.ca/factsage/fs_clientslist.php">CRCT Clients</a>
+					<a href = "http://www.crct.polymtl.ca/factweb.php">Fact-Web</a>
+					<a href = "http://www.crct.polymtl.ca/fact/facthelp/fs71_news.htm">FactSage 7.1 ~News~</a>
+					<a href = "http://www.crct.polymtl.ca/fact/facthelp/fs70_news.htm">FactSage 7.0 ~News~</a>
+					<a href = "http://www.crct.polymtl.ca/factsage/fsdl_service.htm">Download Service</a>
+					<a href = "http://www.crct.polymtl.ca/fact/facthelp/Images_ShowMe71/ShowMe71.htm">Installation Instructions</a>
 			</nav>
 		
 		<nav id = "horizontal_menu">
 			<div class = "dropdown">
 				<button class = "dropbtn">Info</button>
 				<div class = "dropdown-content">
-					<a onClick = "loadDoc('fs_general.php')">General</a>
+					<a id = "reqGeneral" >General</a>
 				</div>
 			</div>
 
 			<div class = "dropdown">
 				<button class = "dropbtn">Databases</button>
 				<div class = "dropdown-content">
-					<a>Documentation</a>
-					<a>View Data</a>
-					<a>Compound</a>
-					<a>Solution</a>
+					<a href = "http://www.crct.polymtl.ca/fact/documentation/">Documentation</a>
+					<a href = "http://www.crct.polymtl.ca/factsage/fs_viewdata.php">View Data</a>
+					<a href = "http://www.crct.polymtl.ca/factsage/fs_compound.php">Compound</a>
+					<a href = "http://www.crct.polymtl.ca/factsage/fs_solution.php">Solution</a>
 				</div>
 			</div>
 
 			<div class = "dropdown">
 				<button class = "dropbtn">Calculate</button>
 				<div class = "dropdown-content">
-					<a onClick = "loadDoc('fs_reaction.php')">Reaction</a>
-					<a>Predom</a>
-					<a>EpH</a>
-					<a>Equilib</a>
-					<a>Phase Diagram</a>
-					<a>OptiSage</a>
+					<a id = "reqReaction" >Reaction</a>
+					<a href = "http://www.crct.polymtl.ca/factsage/fs_predom.php">Predom</a>
+					<a href = "http://www.crct.polymtl.ca/factsage/fs_eph.php">EpH</a>
+					<a href = "http://www.crct.polymtl.ca/factsage/fs_equilib.php">Equilib</a>
+					<a href = "http://www.crct.polymtl.ca/factsage/fs_pd.php">Phase Diagram</a>
+					<a href = "http://www.crct.polymtl.ca/factsage/fs_optisage.php">OptiSage</a>
 				</div>
 			</div>
 
 			<div class = "dropdown">
 				<button class = "dropbtn">Manipulate</button>
 				<div class = "dropdown-content">
-					<a>Results</a>
-					<a>Mixture</a>
-					<a>Fact-XML</a>
-					<a>Figure</a>
-					<a>Viscosity</a>
-					<a>Quit</a>
+					<a href = "http://www.crct.polymtl.ca/factsage/fs_results.php">Results</a>
+					<a href = "http://www.crct.polymtl.ca/factsage/fs_mixture.php">Mixture</a>
+					<a href = "http://www.crct.polymtl.ca/factsage/fs_factxml.php">Fact-XML</a>
+					<a href = "http://www.crct.polymtl.ca/factsage/fs_figure.php">Figure</a>
+					<a href = "http://www.crct.polymtl.ca/factsage/fs_viscosity.php">Viscosity</a>
+					<a href = "">Quit</a>
 				</div>
 			</div>
 		</nav>
@@ -89,5 +89,6 @@
 		</footer>
 
 	</div>
+<script type = "text/javascript" src="factsage.js"> </script>
 </body>
 </html>
