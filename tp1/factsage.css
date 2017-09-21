@@ -1,9 +1,9 @@
-header a, .dropdown-content a, .vertical-menu a, #copyrightCRCT, #copyrightThermfact, #modifDate, #appName{
+header a, .dropdown-content a, .vertical-menu a, #copyrightCRCT, #copyrightThermfact, #modifDate, #appName {
     font-family: "Arial";
 }
 
 #copyrightCRCT, #copyrightThermfact, #modifDate, #appName, header a {
-    font-size: 11px;
+    font-size: 1.5vmin;
 }
 
 body {
@@ -42,17 +42,17 @@ header img {
 #horizontal_menu {                      /*La section contenant l'ensemble des boutons.*/
     float: right;
     width: 85vw;
-    margin-top : 0vh;                   /*Permet de décoller la barre de boutons du shadow du header.*/
+    margin-top:1vh;
 }
 
 .dropbtn {
     background-color: #2E58DD;
     color: white;                     /*Couleur du texte.*/
-    font-size: 16px;
+    font-size: 2.5vmin;
     border: none;
     cursor: pointer;                    /*Modifie le cursor lorsque Mouse Over.*/
     border-radius: 5px;                 /*Rounded corners.*/
-    width: 20.5vw;
+    width: 20vw;
     height: 4vh;
     max-height:40px;
 }
@@ -67,7 +67,7 @@ header img {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
-    width: 20.5vw;
+    width: 20vw;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
     z-index: 1;
     border-radius: 5px;
@@ -95,24 +95,16 @@ header img {
 }
 
 /*----------------------------------------------------MENU VERTICAL DE GAUCHE----------------------------------------------------*/
-.vertical-menu-top-margin {
-    background-color: red;
-    height: 5vh;
-    max-height: 40px;
-    width: 10px;
-    top:0;
-    
-    
-}
 
 .vertical-menu {
     float: left;                /*Permet d'avoir le menu vertical complètement à gauche des autres éléments.*/
     width: 14vw;
-    height: 70vh;
+    height: 75vh;
     overflow: auto;             /* Permet de scroll-down dans la barre verticale de menu.*/
     box-shadow: 2px 0px 16px 0px rgba(0,0,0,0.5); 
     background-color:rgba(0,0,0,0.2);
     border-radius: 5px;
+    margin-top:5vh;
 }
 
 .vertical-menu a {
@@ -124,6 +116,7 @@ header img {
     margin-left: 5px;
     padding: 12px;
     text-decoration: none;
+    font-size: 1.25vw;
     border-radius: 5px;
     text-align: center;
     font-weight: bold;
@@ -131,6 +124,7 @@ header img {
 
 .vertical-menu a:hover {
     background-color: #ccc;
+    cursor: pointer;
 }
 
 .vertical-menu a.active {

@@ -1,3 +1,5 @@
+//document.getElementById("test").onclick = loadDoc('fs_general.php');
+
 function loadDoc(url){
     var xhttp = new XMLHttpRequest();
     
