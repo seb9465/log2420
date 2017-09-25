@@ -16,5 +16,4 @@ function loadDoc(url){
 	/* Fait l'appel à l'eveniment click afin d'appeler la fonction loadDoc qui affiche la page */
 	
 	document.getElementById('reqReaction').addEventListener("click", function(){loadDoc('fs_reaction.php')});
-
-    //document.getElementById('reqGeneral').addEventListener("click", function() {loadDoc('fs_general.php')});
+    document.getElementById('reqGeneral').addEventListener("click", function() {loadDoc('fs_general.php')});
