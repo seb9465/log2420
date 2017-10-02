@@ -1,4 +1,25 @@
 #map {
- height: 65vh;
+    position:absolute;
+ height: 50vh;
  width: 100vw;
+ bottom:0;
+}
+
+#carte, #liste {
+    position:absolute;
+}
+
+.nav-tabs > li > a {
+    background-color: #738085;
+    color: #ffffff;
+    cursor: pointer;
+    border: none;
+}
+
+#secondTab {
+    margin-left:1.5vh;
+}
+
+body{
+    overflow:hidden;
 }

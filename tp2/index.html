@@ -20,15 +20,20 @@
 
     <!-- Google MAP API -->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjonwWBWoE1W6L8sU7KPl7zkRLSaPNC2o"></script>
+
+    <!-- Pour JQuerry / Autocomplete -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     
     <title>Vélo Montréal</title>
     
 </head>
 <body>
+    <!-- Barre de naviguation (menu). -->
 	<nav class="navbar navbar-inverse">
         <div class="container-fluid">
-
-            <!-- Logo -->
+            <!-- Endroit pour insérer un logo ou le nom du site. -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNavBar">
                     <span class="icon-bar"></span>
@@ -38,7 +43,7 @@
                 <a href="#" class="navbar-brand">Vélo Montréal</a>
             </div>
 
-            <!-- Menu Items -->
+            <!-- Items du menu. -->
             <div class="collapse navbar-collapse" id="mainNavBar">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">Accueil</a></li>
@@ -50,33 +55,44 @@
 
     <div class="container">
         <ul class="nav nav-tabs">
+            <!-- Les deux onglets. -->
             <li class="active"><a data-toggle="tab" href="#carteStations">Carte des stations</a></li>
-            <li><a data-toggle="tab" href="#listeStations">Liste des stations</a></li>
+            <li><a id="secondTab" data-toggle="tab" href="#listeStations">Liste des stations</a></li>
         </ul>
     </div>
 
     <div classe="tab-content">
+        <!-- Content de l'onglet Carte des stations. -->
         <div id="carteStations" class="tab-pane fade in active">
-            <h3>Cartes des stations</h3>
+
             <!-- ENDROIT OU METTRE LA PORTION DE CODE POUR LA CARTE DES STATIONS -->
 
+            <!-- TODO / Deux colonnes au haut de la MAP. -->
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th class="col"></th>
+                        <th class="col"></th>
+                    </tr>
+                </tbody>
+            </table>
 
-
+            <!-- Autocomplete -->
+            <input id="autocomplete">
+            
+            <!-- Pour la portion Google Map -->
             <div id="map"></div>
             <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUcuAVxaXeDLmc8qLm8uvpHhUW5Waw5zQ&callback=initMap"></script>
-
-
-
         </div>
+
+        <!-- Contenu de l'onglet Liste des stations. -->
         <div id="listeStations" class="tab-pane fade">
-            <h3>Liste des stations</h3>
             <!-- ENDROIT OU METTRE LA PORTION DE CODE POUR LA LISTE DES STATIONS -->
+
         </div>
     </div>
-    
-    
-    <script type = "text/javascript" src="index.js"> </script>
+
+    <!-- ?????? EMPLACEMENT ?????? -->
+    <script type = "text/javascript" src="javascript/index.js"> </script>
 </body>
 </html>
-
-<!-- https://www.youtube.com/watch?v=CPvZzJlUz20 -->
