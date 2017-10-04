@@ -23,44 +23,22 @@ function initMap() {
   });
 
 var obj;
-
-
-/*
-$.ajax({
-  type: "GET",
-  url: "https://secure.bixi.com/data/stations.json",
-  success: function(result)
-  {
-  console.log(result);
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        obj = JSON.parse(this.responseText);
+    }
+};
+xmlhttp.open("GET", "https://secure.bixi.com/data/stations.json", true);
+xmlhttp.send();
   
-  obj = result;
-  }
-  });
-  */
 
-  document.getElementById('secondTab').addEventListener("click", function(){loadJSON()});
-
-  function loadJSON() {
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            obj = JSON.parse(this.responseText);
-            //document.getElementById("demo").innerHTML = myObj.name;
-        }
-    };
-    xmlhttp.open("GET", "https://secure.bixi.com/data/stations.json", true);
-    xmlhttp.send();
-  }
-
-
+  //obj = JSON.stringify("data/stations.json");
 $(document).ready(function() {
   $('#example').DataTable( {
-      //"ajax": "https://secure.bixi.com/data/stations.json",
-      data:obj,
-      columns: [
-          { "stations": "id"},
-          { "stations": "s" },
-          { "stations": "b" }
+      "data": "data/stations.json",
+      "columns": [
+          { "stations": "s" }
       ]
   } );
 } );
