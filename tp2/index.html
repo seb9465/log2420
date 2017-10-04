@@ -25,7 +25,11 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="//code.jquery.com/jquery-1.12.4.js"></script>
     <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    
+
+    <!-- For DataTables -->
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
     <title>Vélo Montréal</title>
     
 </head>
@@ -61,7 +65,7 @@
         </ul>
     </div>
 
-    <div classe="tab-content">
+    <div class="tab-content">
         <!-- Content de l'onglet Carte des stations. -->
         <div id="carteStations" class="tab-pane fade in active">
 
@@ -88,7 +92,7 @@
         <!-- Contenu de l'onglet Liste des stations. -->
         <div id="listeStations" class="tab-pane fade">
             <!-- ENDROIT OU METTRE LA PORTION DE CODE POUR LA LISTE DES STATIONS -->
-
+            <table id="example" class="display" width="100%"></table>
         </div>
     </div>
 

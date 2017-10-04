@@ -1,12 +1,13 @@
+
 #map {
-    position:absolute;
- height: 50vh;
- width: 100vw;
- bottom:0;
+    position : absolute;
+    height: 50vh;
+    width: 100vw;
+    bottom:0;
 }
 
-#carte, #liste {
-    position:absolute;
+#carte {
+    position : absolute;
 }
 
 .nav-tabs > li > a {
