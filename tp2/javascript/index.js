@@ -23,22 +23,28 @@ function initMap() {
   });
 
 var obj;
-var xmlhttp = new XMLHttpRequest();
-xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        obj = JSON.parse(this.responseText);
-    }
-};
-xmlhttp.open("GET", "https://secure.bixi.com/data/stations.json", true);
-xmlhttp.send();
-  
+var btn = document.getElementById('secondTab');
 
-  //obj = JSON.stringify("data/stations.json");
+//btn.addEventListener("click", function() {
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.open('GET', 'https://secure.bixi.com/data/stations.json');
+  xmlhttp.onload = function() {
+    if(xmlhttp.status >= 200 && xmlhttp.status < 400) {
+      var myobj = JSON.parse(xmlhttp.responseText);
+      obj = myobj.stations;
+      console.log(obj);
+    } else {
+      console.log("Error connecting to the server.");
+    }
+  };
+  xmlhttp.send();
+//});
+
 $(document).ready(function() {
-  $('#example').DataTable( {
-      "data": "data/stations.json",
+  $('#example').dataTable( {
+      "data": obj,
       "columns": [
-          { "stations": "s" }
+          { "data":  "s" }
       ]
   } );
 } );
