@@ -1,76 +1,78 @@
-var a = [];
+var infosDatatable = [];
 var nomStations = [];
-
 var coordonnees = [];
 
 /**
    * Fonction permettant d'aller récupérer les informations sur le site
    * contenant les informations sur les stations BIXI.
    */
-  var obj;
-  var xmlhttp = new XMLHttpRequest();
-  xmlhttp.open('GET', 'https://secure.bixi.com/data/stations.json');
-  xmlhttp.onload = function() {
-    if(xmlhttp.status >= 200 && xmlhttp.status < 400) {
-      var myobj = JSON.parse(xmlhttp.responseText);
-      console.log("1. Data as been retreived from server.");
-      obj = myobj.stations;
-      hello();
-      console.log("2. Data has been parse and placed in variables.");
-      hi();
-      console.log("3. Data has been put in the DataTables.");
-      initMap();
-      console.log("4. Init map.");
-    } else {
-      console.log("Error connecting to the server.");
-    }
-  };
-  xmlhttp.send();
+var objStations;
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.open('GET', 'https://secure.bixi.com/data/stations.json');
+xmlhttp.onload = function() {
+  if(xmlhttp.status >= 200 && xmlhttp.status < 400) {
+    var myobj = JSON.parse(xmlhttp.responseText);
+    objStations = myobj.stations;
+    console.log("1. Data as been retreived from server.");
+    generateVariablesFromJsonObject();
+    console.log("2. Data has been parse and placed in variables.");
+    createDataTable();
+    console.log("3. Data has been put in the DataTables.");
+    initMap();
+    console.log("4. Init map.");
+  } else {
+    console.log("Error connecting to the server.");
+  }
+};
+xmlhttp.send();
 
 
-function hello() {
-  var temp = [];
+function generateVariablesFromJsonObject() {
+  var tempInfoDatatable = [];
   var tempCoordonnees = [];
   var etatBloque = "";
-  for(var i = 0 ; i < obj.length ; i++) {
-    temp = [];
+  for(var i = 0 ; i < objStations.length ; i++) {
+    tempInfoDatatable = [];
     tempCoordonnees = [];
 
-    temp.push(obj[i].id);             //ID
-    temp.push(obj[i].s);              //Nom station
-    temp.push(obj[i].ba);             //Vélos disponibles
-    temp.push(obj[i].da);             //Bornes disponibles
+    // ----------- Creation d'un tableau contenant les informations pour la DATATABLE -----------
+    tempInfoDatatable.push(objStations[i].id);        //ID
+    tempInfoDatatable.push(objStations[i].s);         //Nom station
+    tempInfoDatatable.push(objStations[i].ba);        //Vélos disponibles
+    tempInfoDatatable.push(objStations[i].da);        //Bornes disponibles
 
     etatBloque = "";
-    if(obj[i].b == true)              //État bloqué
+    if(objStations[i].b == true)                      //État bloqué
       etatBloque = "Oui";
     else
       etatBloque = "Non";
-    temp.push(etatBloque);     
+    tempInfoDatatable.push(etatBloque);     
 
     var etatSuspendu = "";
-    if(obj[i].su == true)             //État suspendu
+    if(objStations[i].su == true)                     //État suspendu
       etatSuspendu = "Oui";
     else
       etatSuspendu = "Non";
-    temp.push(etatSuspendu);   
+    tempInfoDatatable.push(etatSuspendu);   
 
-    nomStations.push(obj[i].s);       //Nom de stations
+    // ----------- Creation d'un tableau contenant les informations pour la MAP -----------
+    tempCoordonnees.push(objStations[i].s);           //Nom de stations
+    tempCoordonnees.push(objStations[i].la);          //Latitude
+    tempCoordonnees.push(objStations[i].lo);          //Longitude 
 
-    tempCoordonnees.push(obj[i].s);   //Nom de stations
-    tempCoordonnees.push(obj[i].la);  //Latitude
-    tempCoordonnees.push(obj[i].lo);  //Longitude 
-
-    a.push(temp);
-    coordonnees.push(tempCoordonnees);
+    //Variables globales.
+    infosDatatable.push(tempInfoDatatable);   //push du tableau contenant seulement les informations désirées pour la liste des stations (DATATABLE).
+    coordonnees.push(tempCoordonnees);        //push du tableau contenant seulement les informations désirées pour les coordonnes (MAPS).
+    nomStations.push(objStations[i].s);       //Nom de stations pour le AutoComplete.
   }
 };
 
-function hi() {
+
+function createDataTable() {
   $(document).ready(function() {
     $('#example').DataTable( {
-        data: a,
-        columns: [
+        data: infosDatatable,
+        columns: [                              //Les différentes colonnes désirées dans le tableau.
           { title : "ID" },
           { title : "Nom station" },
           { title : "Vélos disponibles" },
@@ -78,7 +80,7 @@ function hi() {
           { title : "État bloqué" },
           { title : "État suspendu" }
         ],
-        columnDefs: [
+        columnDefs: [                           //Alignement des différentes colonnes du tableau.
           { className: "dt-body-center" , "targets":[0,2,3,4,5] },    //Aligne au centre la 1ere colonne (ID).
           { className: "dt-body-left" , "targets":[1] },              //Aligne à gauche la 2e colonne (nom des stations).
           { className: "dt-head-center" , "targets":[0,2,3,4,5] },    //Aligne au centre la 1ere colonne (ID).
@@ -93,12 +95,10 @@ function hi() {
  * Fonction permettant l'affichage de la map Google.
  */
 function initMap() {
-  var uluru = {lat: 45.5087, lng: -73.554};
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 13,
-    center: uluru
+    zoom: 16,
+    center: new google.maps.LatLng(coordonnees[0][1], coordonnees[0][2])
   });
-
   
   var marker, i;
   var infowindow = new google.maps.InfoWindow();
@@ -118,8 +118,6 @@ function initMap() {
     })(marker,i));
   }
 };
-
-
 
 
 $( "#autocomplete" ).autocomplete({
