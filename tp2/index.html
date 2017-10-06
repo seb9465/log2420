@@ -1,24 +1,23 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
-    
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
+    <!-- Link to our CSS file. -->
     <link rel="stylesheet" href="css/index.css">
 
-    <!-- Latest compiled and minified CSS -->
+    <!-- Latest compiled and minified CSS for BootStrap. -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <!-- Pour JQuerry / Autocomplete -->
+    <!-- Pour JQuerry / Autocomplete. -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="//code.jquery.com/jquery-1.12.4.js"></script>
     <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-    <!-- For DataTables -->
+    <!-- For DataTables. -->
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
@@ -74,17 +73,18 @@
             
             <!-- Pour la portion Google Map -->
             <div id="map"></div>
-            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUcuAVxaXeDLmc8qLm8uvpHhUW5Waw5zQ&callback=initMap"></script>
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUcuAVxaXeDLmc8qLm8uvpHhUW5Waw5zQ"></script>
         </div>
 
         <!-- Contenu de l'onglet Liste des stations. -->
         <div id="listeStations" class="tab-pane fade">
             <!-- ENDROIT OU METTRE LA PORTION DE CODE POUR LA LISTE DES STATIONS -->
-            <table id="example" class="display" width="100%"></table>
+            <!-- Options pouvant être ajouté à la classe : compact , hover , order-column ,
+                 row-border-->
+            <table id="example" class="stripe hover dt-body-center" width="100%"></table>
         </div>
     </div>
 
-    <!-- ?????? EMPLACEMENT ?????? -->
     <script type = "text/javascript" src="javascript/index.js"> </script>
 </body>
 </html>
