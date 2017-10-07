@@ -99,7 +99,7 @@ function createDataTable() {
 
     /*table.rows().every( function(rowIdx, tableLoop, rowLoop) {
       var cell = table.cell({row: rowIdx, column: 0}).node();
-      $(cell).addClass('warning');
+      $(cell).addClass('warning') ;
     });*/
   });
 };
