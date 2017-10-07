@@ -6,15 +6,16 @@ var coordonnees = [];
    * Fonction permettant d'aller récupérer les informations sur le site
    * contenant les informations sur les stations BIXI.
    */
-var objStations;
+
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.open('GET', 'https://secure.bixi.com/data/stations.json');
 xmlhttp.onload = function() {
   if(xmlhttp.status >= 200 && xmlhttp.status < 400) {
+    var objStations;
     var myobj = JSON.parse(xmlhttp.responseText);
     objStations = myobj.stations;
     console.log("1. Data as been retreived from server.");
-    generateVariablesFromJsonObject();
+    generateVariablesFromJsonObject(objStations);
     console.log("2. Data has been parse and placed in variables.");
     createDataTable();
     console.log("3. Data has been put in the DataTables.");
@@ -26,51 +27,59 @@ xmlhttp.onload = function() {
 };
 xmlhttp.send();
 
-
-function generateVariablesFromJsonObject() {
+/**
+ * Variable dataTable :
+ * [...][0] = ID.
+ * [...][1] = Nom de la station.
+ * [...][2] = Nombre de vélos disponibles.
+ * [...][3] = Nombre de bornes disponibles.
+ * [...][4] = État bloqué (bool).
+ * [...][5] = État suspendu (bool).
+ * 
+ * Variable coordonnees :
+ * [...][0] = Nom de la station.
+ * [...][1] = Latitude de la station.
+ * [...][2] = Longitude de la station.
+ */
+function generateVariablesFromJsonObject(object) {
   var tempInfoDatatable = [];
   var tempCoordonnees = [];
   var etatBloque = "";
-  for(var i = 0 ; i < objStations.length ; i++) {
+  var etatSuspendu = "";
+  for(var i = 0 ; i < object.length ; i++) {
     tempInfoDatatable = [];
     tempCoordonnees = [];
 
     // ----------- Creation d'un tableau contenant les informations pour la DATATABLE -----------
-    tempInfoDatatable.push(objStations[i].id);        //ID
-    tempInfoDatatable.push(objStations[i].s);         //Nom station
-    tempInfoDatatable.push(objStations[i].ba);        //Vélos disponibles
-    tempInfoDatatable.push(objStations[i].da);        //Bornes disponibles
+    tempInfoDatatable.push(object[i].id);        //ID
+    tempInfoDatatable.push(object[i].s);         //Nom station
+    tempInfoDatatable.push(object[i].ba);        //Vélos disponibles
+    tempInfoDatatable.push(object[i].da);        //Bornes disponibles
 
-    etatBloque = "";
-    if(objStations[i].b == true)                      //État bloqué
-      etatBloque = "Oui";
-    else
-      etatBloque = "Non";
+    etatBloque = object[i].b == true ? "Oui" : "Non";//État bloqué                     
     tempInfoDatatable.push(etatBloque);     
 
-    var etatSuspendu = "";
-    if(objStations[i].su == true)                     //État suspendu
-      etatSuspendu = "Oui";
-    else
-      etatSuspendu = "Non";
+    etatSuspendu = object[i].su == true ? "Oui" : "Non";//État suspendu
     tempInfoDatatable.push(etatSuspendu);   
 
     // ----------- Creation d'un tableau contenant les informations pour la MAP -----------
-    tempCoordonnees.push(objStations[i].s);           //Nom de stations
-    tempCoordonnees.push(objStations[i].la);          //Latitude
-    tempCoordonnees.push(objStations[i].lo);          //Longitude 
+    tempCoordonnees.push(object[i].s);           //Nom de stations
+    tempCoordonnees.push(object[i].la);          //Latitude
+    tempCoordonnees.push(object[i].lo);          //Longitude 
 
     //Variables globales.
     infosDatatable.push(tempInfoDatatable);   //push du tableau contenant seulement les informations désirées pour la liste des stations (DATATABLE).
     coordonnees.push(tempCoordonnees);        //push du tableau contenant seulement les informations désirées pour les coordonnes (MAPS).
-    nomStations.push(objStations[i].s);       //Nom de stations pour le AutoComplete.
+    nomStations.push(object[i].s);       //Nom de stations pour le AutoComplete.
   }
 };
 
-
+/**
+ * DataTable 
+ */
 function createDataTable() {
   $(document).ready(function() {
-    $('#example').DataTable( {
+    var table = $('#example').DataTable( {
         data: infosDatatable,
         columns: [                              //Les différentes colonnes désirées dans le tableau.
           { title : "ID" },
@@ -87,12 +96,18 @@ function createDataTable() {
           { className: "dt-head-left" , "targets":[1] }               //Aligne à gauche la 2e colonne (nom des stations).
         ]
     } );
-  } );
+
+    /*table.rows().every( function(rowIdx, tableLoop, rowLoop) {
+      var cell = table.cell({row: rowIdx, column: 0}).node();
+      $(cell).addClass('warning');
+    });*/
+  });
 };
 
 
   /**
  * Fonction permettant l'affichage de la map Google.
+ * variable infoDatatable :
  */
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
@@ -116,6 +131,8 @@ function initMap() {
         infowindow.open(map,marker);
       }
     })(marker,i));
+
+
   }
 };
 
