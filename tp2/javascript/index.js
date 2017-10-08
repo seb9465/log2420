@@ -131,10 +131,15 @@ function initMap() {
         infowindow.open(map,marker);
       }
     })(marker,i));
-
-
   }
 };
+
+function showInfoClickedMarker(marker, i) {
+  return function() {
+    infowindow.setContent(coordonnees[i][0]);
+    infowindow.open(map,marker);
+  }
+}
 
 
 $( "#autocomplete" ).autocomplete({
