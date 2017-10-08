@@ -111,35 +111,39 @@ function createDataTable() {
  */
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 16,
+    zoom: 15,
     center: new google.maps.LatLng(coordonnees[0][1], coordonnees[0][2])
   });
   
-  var marker, i;
-  var infowindow = new google.maps.InfoWindow();
+  var marker, i, infowindow = new google.maps.InfoWindow();
+  //var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+  var image = "assets/bike-icon.png";
   for(i = 0 ; i < coordonnees.length ; i++) {
     // Permet d'afficher plusieurs 'marker' dans la map.
     marker = new google.maps.Marker({
-      position: new google.maps.LatLng(coordonnees[i][1], coordonnees[i][2]),
-      map: map
+      position: new google.maps.LatLng(coordonnees[i][1], coordonnees[i][2]),   //position (obligatoire) : emplacement du marqueur (latitude, longitude).
+      map: map,                                                                 //map (facultatif) : Spécifie l'objet Map sur lequel placer le marqueur.
+      title: coordonnees[i][0],                                                 //title (facultatif) : On mouse over, affiche un tooltip.            
+      animation: google.maps.Animation.DROP,                                    //animation (facultatif) : Animation du marker.
+      draggable: false,                                                         //draggable (falcultatif) : Empeche l'utilisateur de déplacer le marker.
+      icon: image                                                               
     }); 
 
-    //Permet d'afficher une bulle d'information lorsqu'on clique sur un marker.
+    //Permet d'afficher une bulle d'informations lorsqu'on clique sur un marker.
     google.maps.event.addListener(marker, 'click', (function(marker,i) {
       return function() {
+        //Afficher la bulle d'informations.
         infowindow.setContent(coordonnees[i][0]);
         infowindow.open(map,marker);
+
+        //Faire 'bounce' le marker une fois.
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+        setTimeout(function(){ marker.setAnimation(null); }, 750);
       }
     })(marker,i));
   }
 };
 
-function showInfoClickedMarker(marker, i) {
-  return function() {
-    infowindow.setContent(coordonnees[i][0]);
-    infowindow.open(map,marker);
-  }
-}
 
 
 $( "#autocomplete" ).autocomplete({
