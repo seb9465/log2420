@@ -116,8 +116,6 @@ function initMap() {
   });
   
   var marker, i, infowindow = new google.maps.InfoWindow();
-  //var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
-  var image = "assets/bike-icon.png";
   for(i = 0 ; i < coordonnees.length ; i++) {
     // Permet d'afficher plusieurs 'marker' dans la map.
     marker = new google.maps.Marker({
@@ -125,15 +123,17 @@ function initMap() {
       map: map,                                                                 //map (facultatif) : Spécifie l'objet Map sur lequel placer le marqueur.
       title: coordonnees[i][0],                                                 //title (facultatif) : On mouse over, affiche un tooltip.            
       animation: google.maps.Animation.DROP,                                    //animation (facultatif) : Animation du marker.
-      draggable: false,                                                         //draggable (falcultatif) : Empeche l'utilisateur de déplacer le marker.
-      icon: image                                                               
+      draggable: false,                                                         //draggable (falcultatif) : Empeche l'utilisateur de déplacer le marker.                                                          
     }); 
 
     //Permet d'afficher une bulle d'informations lorsqu'on clique sur un marker.
     google.maps.event.addListener(marker, 'click', (function(marker,i) {
       return function() {
         //Afficher la bulle d'informations.
-        infowindow.setContent(coordonnees[i][0]);
+        var content = '<h5>Nom de la station : ' + coordonnees[i][0] + '</h5>' + 
+        '<h5>Latitude : ' + coordonnees[i][1] + '</h5>' +
+        '<h5>Longitude : ' + coordonnees[i][2] + '</h5>';
+        infowindow.setContent(content);
         infowindow.open(map,marker);
 
         //Faire 'bounce' le marker une fois.
