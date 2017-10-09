@@ -131,8 +131,8 @@ function initMap() {
       return function() {
         //Afficher la bulle d'informations.
         var content = '<h5>Nom de la station : ' + coordonnees[i][0] + '</h5>' + 
-        '<h5>Latitude : ' + coordonnees[i][1] + '</h5>' +
-        '<h5>Longitude : ' + coordonnees[i][2] + '</h5>';
+        '<h5>Vélos diponibles : ' + infosDatatable[i][2] + '</h5>' +
+        '<h5>Bornes disponibles : ' + infosDatatable[i][3] + '</h5>';
         infowindow.setContent(content);
         infowindow.open(map,marker);
 

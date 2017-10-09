@@ -23,3 +23,12 @@
 body {
     /*overflow:hidden;*/
 }
+
+#autocomplete, #localisationTitre {
+    width:30vw;
+    margin-left:5vw;
+}
+
+#colonneGauche {
+    width:50vw;
+}
