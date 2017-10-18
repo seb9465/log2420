@@ -2,30 +2,26 @@ var infosDatatable = [];
 var nomStations = [];
 var coordonnees = [];
 
+
 /**
    * Fonction permettant d'aller récupérer les informations sur le site
    * contenant les informations sur les stations BIXI.
    */
-
-var xmlhttp = new XMLHttpRequest();
-xmlhttp.open('GET', 'https://secure.bixi.com/data/stations.json');
-xmlhttp.onload = function() {
-  if(xmlhttp.status >= 200 && xmlhttp.status < 400) {
-    var objStations;
-    var myobj = JSON.parse(xmlhttp.responseText);
-    objStations = myobj.stations;
-    console.log("1. Data as been retreived from server.");
-    generateVariablesFromJsonObject(objStations);
-    console.log("2. Data has been parse and placed in variables.");
-    createDataTable();
-    console.log("3. Data has been put in the DataTables.");
-    initMap();
-    console.log("4. Init map.");
-  } else {
-    console.log("Error connecting to the server.");
-  }
-};
-xmlhttp.send();
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.open('GET', 'https://secure.bixi.com/data/stations.json');
+  xmlhttp.onload = function() {
+    if(xmlhttp.status >= 200 && xmlhttp.status < 400) {
+      var objStations;
+      var myobj = JSON.parse(xmlhttp.responseText);
+      objStations = myobj.stations;
+      generateVariablesFromJsonObject(objStations);
+      createDataTable();
+      initMap();
+    } else {
+      console.log("Error connecting to the server.");
+    }
+  };
+  xmlhttp.send();
 
 /**
  * Variable dataTable :
@@ -96,11 +92,6 @@ function createDataTable() {
           { className: "dt-head-left" , "targets":[1] }               //Aligne à gauche la 2e colonne (nom des stations).
         ]
     } );
-
-    /*table.rows().every( function(rowIdx, tableLoop, rowLoop) {
-      var cell = table.cell({row: rowIdx, column: 0}).node();
-      $(cell).addClass('warning') ;
-    });*/
   });
 };
 
@@ -143,8 +134,6 @@ function initMap() {
     })(marker,i));
   }
 };
-
-
 
 $( "#autocomplete" ).autocomplete({
   source: nomStations
