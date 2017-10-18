@@ -32,3 +32,8 @@ body {
 #colonneGauche {
     width:50vw;
 }
+
+#listeStations {
+    margin-left : 3vw;
+    margin-right: 3vw;
+}
