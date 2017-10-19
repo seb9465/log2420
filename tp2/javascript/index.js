@@ -3,7 +3,6 @@ var nomStations = [];
 var coordonnees = [];
 var datatable;
 var mapGoogle;
-var mapMarker;
 
 
 /**
@@ -17,13 +16,13 @@ var mapMarker;
       var objStations;
       var myobj = JSON.parse(xmlhttp.responseText);
       objStations = myobj.stations;
-      generateVariablesFromJsonObject(objStations);
-      //createDataTable();
+      //generateVariablesFromJsonObject(objStations);
       createEmptyDataTable();
-      //initMap();
       initEmptyMap();
 
-      var dict = {};
+      let dict = {};
+      var mapMarker;
+      var infowindow = new google.maps.InfoWindow();
 
       $.each(myobj.stations, function(i, station) {
         let newStation = {
@@ -38,25 +37,47 @@ var mapMarker;
         }
         dict[newStation.nom] = newStation;
 
-
-
         datatable.row.add(newStation).draw();
-
-
-
-        mapMarker = new google.maps.Marker({
-          position: new google.maps.LatLng(newStation.latitude, newStation.longitude),   //position (obligatoire) : emplacement du marqueur (latitude, longitude).
-          map: mapGoogle,                                                                 //map (facultatif) : Spécifie l'objet Map sur lequel placer le marqueur.
-          title: newStation.nom,                                                 //title (facultatif) : On mouse over, affiche un tooltip.            
-          animation: google.maps.Animation.DROP,                                    //animation (facultatif) : Animation du marker.
-          draggable: false,                                                         //draggable (falcultatif) : Empeche l'utilisateur de déplacer le marker.                                                          
-        }); 
+        mapMarker = addMapMarker(newStation);
+        addListenerToMapMarker(infowindow, newStation, mapMarker);
+        
       });
+      initAutoComplete(dict);
     } else {
       console.log("Error connecting to the server.");
     }
   };
   xmlhttp.send();
+
+function addMapMarker(newStation) {
+  var mapMarker = new google.maps.Marker({
+    position: new google.maps.LatLng(newStation.latitude, newStation.longitude),    //position (obligatoire) : emplacement du marqueur (latitude, longitude).
+    map: mapGoogle,                                                                 //map (facultatif) : Spécifie l'objet Map sur lequel placer le marqueur.
+    title: newStation.nom,                                                          //title (facultatif) : On mouse over, affiche un tooltip.            
+    animation: google.maps.Animation.DROP,                                          //animation (facultatif) : Animation du marker.
+    draggable: false,                                                               //draggable (falcultatif) : Empeche l'utilisateur de déplacer le marker.                                                          
+  });
+  return mapMarker;
+}
+
+
+function addListenerToMapMarker(infowindow, newStation, mapMarker) {
+  google.maps.event.addListener(mapMarker, 'click', (function(mapMarker) {
+    return function() {
+      //Afficher la bulle d'informations.
+      var content = '<h5>Nom de la station : ' + newStation.nom + '</h5>' + 
+      '<h5>Vélos diponibles : ' + newStation.veloDisponible + '</h5>' +
+      '<h5>Bornes disponibles : ' + newStation.borneDisponible + '</h5>';
+      infowindow.setContent(content);
+      infowindow.open(mapGoogle,mapMarker);
+
+      //Faire 'bounce' le marker une fois.
+      mapMarker.setAnimation(google.maps.Animation.BOUNCE);
+      setTimeout(function(){ mapMarker.setAnimation(null); }, 750);
+    }
+  })(mapMarker));
+}
+
 
 /**
  * Variable dataTable :
@@ -72,6 +93,7 @@ var mapMarker;
  * [...][1] = Latitude de la station.
  * [...][2] = Longitude de la station.
  */
+/*
 function generateVariablesFromJsonObject(object) {
   var tempInfoDatatable = [];
   var tempCoordonnees = [];
@@ -104,10 +126,12 @@ function generateVariablesFromJsonObject(object) {
     nomStations.push(object[i].s);       //Nom de stations pour le AutoComplete.
   }
 };
+*/
 
 /**
  * DataTable 
  */
+/*
 function createDataTable() {
   $(document).ready(function() {
     var table = $('#example').DataTable( {
@@ -129,6 +153,7 @@ function createDataTable() {
     } );
   });
 };
+*/
 
 function createEmptyDataTable() {
   $(document).ready(function() {
@@ -157,6 +182,7 @@ function createEmptyDataTable() {
  * Fonction permettant l'affichage de la map Google.
  * variable infoDatatable :
  */
+/*
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 15,
@@ -191,15 +217,18 @@ function initMap() {
     })(marker,i));
   }
 };
+*/
 
 
 function initEmptyMap() {
   mapGoogle = new google.maps.Map(document.getElementById('map'), {
     zoom: 15,
-    center: new google.maps.LatLng(coordonnees[0][1], coordonnees[0][2])
+    center: new google.maps.LatLng(45.508, -73.554)
   });
 };
 
-$( "#autocomplete" ).autocomplete({
-  source: nomStations
-});
+function initAutoComplete(stations) {
+  $( "#autocomplete" ).autocomplete({
+    source : stations
+  });
+};
