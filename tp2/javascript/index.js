@@ -1,6 +1,7 @@
 var infosDatatable = [];
 var nomStations = [];
 var coordonnees = [];
+var datatable;
 
 
 /**
@@ -15,8 +16,28 @@ var coordonnees = [];
       var myobj = JSON.parse(xmlhttp.responseText);
       objStations = myobj.stations;
       generateVariablesFromJsonObject(objStations);
-      createDataTable();
+      //createDataTable();
+      createEmptyDataTable();
       initMap();
+
+      var dict = {};
+
+      $.each(objStations, function(i, station) {
+        let newStation = {
+          'id' : station.id,
+          'nom' : station.s,
+          'latitude' : station.la,
+          'longitude' : station.lo,
+          'etatBloque' : station.b == true ? "Oui" : "Non",
+          'etatSuspendu' : station.su == true ? "Oui" : "Non",
+          'veloDisponible' : station.ba,
+          'borneDisponible' : station.da
+        }
+        dict[newStation.nom] = newStation;
+
+        datatable.row.add(newStation).draw();
+      });
+      
     } else {
       console.log("Error connecting to the server.");
     }
@@ -93,6 +114,28 @@ function createDataTable() {
         ]
     } );
   });
+};
+
+function createEmptyDataTable() {
+  $(document).ready(function() {
+    datatable = $('#example').DataTable({
+      columns: [                              //Les différentes colonnes désirées dans le tableau.
+        { title : "ID", data : 'id' },
+        { title : "Nom station", data : 'nom' },
+        { title : "Vélos disponibles", data : 'veloDisponible' },
+        { title : "Bornes disponibles", data : 'borneDisponible' },
+        { title : "État bloqué", data : 'etatBloque' },
+        { title : "État suspendu", data : 'etatSuspendu' }
+      ],
+      columnDefs: [                           //Alignement des différentes colonnes du tableau.
+        { className: "dt-body-center" , "targets":[0,2,3,4,5] },    //Aligne au centre la 1ere colonne (ID).
+        { className: "dt-body-left" , "targets":[1] },              //Aligne à gauche la 2e colonne (nom des stations).
+        { className: "dt-head-center" , "targets":[0,2,3,4,5] },    //Aligne au centre la 1ere colonne (ID).
+        { className: "dt-head-left" , "targets":[1] }               //Aligne à gauche la 2e colonne (nom des stations).
+      ]
+    });
+  });
+  
 };
 
 
