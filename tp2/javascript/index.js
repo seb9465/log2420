@@ -2,6 +2,8 @@ var infosDatatable = [];
 var nomStations = [];
 var coordonnees = [];
 var datatable;
+var mapGoogle;
+var mapMarker;
 
 
 /**
@@ -18,11 +20,12 @@ var datatable;
       generateVariablesFromJsonObject(objStations);
       //createDataTable();
       createEmptyDataTable();
-      initMap();
+      //initMap();
+      initEmptyMap();
 
       var dict = {};
 
-      $.each(objStations, function(i, station) {
+      $.each(myobj.stations, function(i, station) {
         let newStation = {
           'id' : station.id,
           'nom' : station.s,
@@ -35,9 +38,20 @@ var datatable;
         }
         dict[newStation.nom] = newStation;
 
+
+
         datatable.row.add(newStation).draw();
+
+
+
+        mapMarker = new google.maps.Marker({
+          position: new google.maps.LatLng(newStation.latitude, newStation.longitude),   //position (obligatoire) : emplacement du marqueur (latitude, longitude).
+          map: mapGoogle,                                                                 //map (facultatif) : Spécifie l'objet Map sur lequel placer le marqueur.
+          title: newStation.nom,                                                 //title (facultatif) : On mouse over, affiche un tooltip.            
+          animation: google.maps.Animation.DROP,                                    //animation (facultatif) : Animation du marker.
+          draggable: false,                                                         //draggable (falcultatif) : Empeche l'utilisateur de déplacer le marker.                                                          
+        }); 
       });
-      
     } else {
       console.log("Error connecting to the server.");
     }
@@ -176,6 +190,14 @@ function initMap() {
       }
     })(marker,i));
   }
+};
+
+
+function initEmptyMap() {
+  mapGoogle = new google.maps.Map(document.getElementById('map'), {
+    zoom: 15,
+    center: new google.maps.LatLng(coordonnees[0][1], coordonnees[0][2])
+  });
 };
 
 $( "#autocomplete" ).autocomplete({
