@@ -21,6 +21,7 @@ var mapGoogle;
       initEmptyMap();
 
       let dict = {};
+      let dictNom = [];
       var mapMarker;
       var infowindow = new google.maps.InfoWindow();
 
@@ -35,15 +36,18 @@ var mapGoogle;
           'veloDisponible' : station.ba,
           'borneDisponible' : station.da
         }
-        
+
         dict[newStation.nom] = newStation;
+        dictNom.push(newStation.nom);
 
         datatable.row.add(newStation).draw();
         mapMarker = addMapMarker(newStation);
         addListenerToMapMarker(infowindow, newStation, mapMarker);
         
+       
+
       });
-      initAutoComplete(dict);
+      initAutoComplete(dictNom);
     } else {
       console.log("Error connecting to the server.");
     }
@@ -108,6 +112,8 @@ function initEmptyMap() {
 
 function initAutoComplete(stations) {
   $( "#autocomplete" ).autocomplete({
+    minLength : 0,
     source : stations
+    //, success : ...
   });
 };
