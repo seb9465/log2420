@@ -33,7 +33,16 @@ body {
     width:50vw;
 }
 
+
 #listeStations {
     margin-left : 3vw;
     margin-right: 3vw;
+}
+
+#colonneDroite .btn-round-xs{
+border-radius: 11px;
+padding-left: 8px;
+padding-right: 8px;
+background-color: grey;
+color:white;
 }

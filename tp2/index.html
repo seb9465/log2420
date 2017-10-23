@@ -61,7 +61,7 @@
         <div id="carteStations" class="tab-pane fade in active">
 
             <!-- ENDROIT OU METTRE LA PORTION DE CODE POUR LA CARTE DES STATIONS -->
-
+	
             <!-- TODO / Deux colonnes au haut de la MAP. -->
             <table class="table table-bordered">
                 <tbody>
@@ -73,12 +73,59 @@
                         </td>
                         
                         <td id="colonneDroite">    <!-- Portion de droite au dessus de la map. -->
-                            
+                           <table class="table table-striped">
+							  <thead>
+								<tr>
+								  <h4>État de la station de vélos</h4>
+								</tr>
+							  </thead>
+							  <tbody>
+									<tr>
+									  <td>ID Station</td>
+									  <td >
+										<button class="btn btn-round-xs btn-xs">-</button>										
+									  </td>
+									  <td>Vélos disponibles</td>
+									   <td >
+										<button class="btn btn-round-xs btn-xs">-</button>										
+									  </td>
+									</tr>
+									<tr>
+									  <td>Bloquée</td>
+									  <td>
+										<button class="btn btn-round-xs btn-xs">-</button>
+									  </td>
+									  <td>Bornes disponibles</td>
+									   <td >
+										<button class="btn btn-round-xs btn-xs">-</button>										
+									  </td>
+									</tr>
+									<tr>
+									  <td>Suspendue</td>
+									   <td>
+										<button class="btn btn-round-xs btn-xs">-</button>	
+									  </td>
+									  <td>Vélos indisponibles</td>
+									   <td >
+										<button class="btn btn-round-xs btn-xs">-</button>										
+									  </td>
+									</tr>
+									<tr>
+									  <td>Hors Service</td>
+									   <td>
+										<button class="btn btn-round-xs btn-xs">-</button>
+									  </td>
+									  <td>Bornes indisponibles</td>	
+									   <td >
+										<button class="btn btn-round-xs btn-xs">-</button>										
+									  </td>								  
+									</tr>
+							  </tbody>
+							</table> 
                         </td>
                     </tr>
                 </tbody>
             </table>
-
             
             <!-- Pour la portion Google Map -->
             <div id="map"></div>

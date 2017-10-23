@@ -115,5 +115,16 @@ function initAutoComplete(stations) {
     minLength : 0,
     source : stations
     //, success : ...
+	
+
   });
 };
+
+$( "#autocomplete" ).on( "autocompleteselect", function( event, ui ) {
+	
+} );
+//function afficherInfoStation(station){
+	
+//};
+
+//document.getElementById('autocomplete').addEventListener("click", function(){afficherInfoStation(station)});
