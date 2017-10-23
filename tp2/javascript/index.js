@@ -37,12 +37,8 @@ var mapMarker;
           'borneDisponible' : station.da
         }
         dict[newStation.nom] = newStation;
-
-
-
+        
         datatable.row.add(newStation).draw();
-
-
 
         mapMarker = new google.maps.Marker({
           position: new google.maps.LatLng(newStation.latitude, newStation.longitude),   //position (obligatoire) : emplacement du marqueur (latitude, longitude).
