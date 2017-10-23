@@ -32,10 +32,14 @@ var mapGoogle;
           'nom' : station.s,
           'latitude' : station.la,
           'longitude' : station.lo,
+		  'horsService':station.m  == true ? "Oui" : "Non",
           'etatBloque' : station.b == true ? "Oui" : "Non",
           'etatSuspendu' : station.su == true ? "Oui" : "Non",
           'veloDisponible' : station.ba,
-          'borneDisponible' : station.da
+          'borneDisponible' : station.da,
+		  'velosIndisponibles' : station.bx,
+		  'bornesIndisponibles' : station.dx,
+		  
         }
         dict[newStation.nom] = newStation;
 		dictNom.push(newStation.nom);
@@ -120,9 +124,9 @@ function initAutoComplete(stations) {
 					document.getElementById("bloquee").innerHTML = dict[ui.item.value].etatBloque;
 					document.getElementById("bornesDisponibles").innerHTML = dict[ui.item.value].borneDisponible;
 					document.getElementById("suspendue").innerHTML = dict[ui.item.value].etatSuspendu;
-					document.getElementById("velosIndisponibles").innerHTML = dict[ui.item.value].id;
-					document.getElementById("horsService").innerHTML = dict[ui.item.value].id;
-					document.getElementById("bornesIndisponibles").innerHTML = dict[ui.item.value].id;
+					document.getElementById("velosIndisponibles").innerHTML = dict[ui.item.value].velosIndisponibles;
+					document.getElementById("horsService").innerHTML = dict[ui.item.value].horsService;
+					document.getElementById("bornesIndisponibles").innerHTML = dict[ui.item.value].bornesIndisponibles;
                }
   });
 };
