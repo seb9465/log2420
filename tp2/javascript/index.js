@@ -42,8 +42,6 @@ var mapGoogle;
         mapMarker = addMapMarker(newStation);
         addListenerToMapMarker(infowindow, newStation, mapMarker);
         
-       
-
         mapMarker = new google.maps.Marker({
           position: new google.maps.LatLng(newStation.latitude, newStation.longitude),   //position (obligatoire) : emplacement du marqueur (latitude, longitude).
           map: mapGoogle,                                                                 //map (facultatif) : Spécifie l'objet Map sur lequel placer le marqueur.
