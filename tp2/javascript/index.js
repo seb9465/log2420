@@ -1,6 +1,7 @@
 var infosDatatable = [];
 var nomStations = [];
 var coordonnees = [];
+var markers = [];
 let dict = {};
 var datatable;
 var mapGoogle;
@@ -64,6 +65,7 @@ function addMapMarker(newStation) {
     animation: google.maps.Animation.DROP,                                          //animation (facultatif) : Animation du marker.
     draggable: false,                                                               //draggable (falcultatif) : Empeche l'utilisateur de déplacer le marker.                                                          
   });
+  markers.push(mapMarker);
   return mapMarker;
 }
 
@@ -157,7 +159,20 @@ function initAutoComplete(stations) {
 						$('#bornesDisponibles').removeClass('progress-bar-success').addClass('progress-bar-danger ');
 					else
 						$('#bornesDisponibles').removeClass('progress-bar-danger').addClass('progress-bar-success ');
+					clearMarkers();
                }
   });
 };
 
+
+// Sets the map on all markers in the array.
+function setMapOnAll(map) {
+    for (var i = 0; i < markers.length; i++) {
+       markers[i].setMap(map);
+       }
+    }
+
+      // Removes the markers from the map, but keeps them in the array.
+function clearMarkers() {
+        setMapOnAll(null);
+      }
