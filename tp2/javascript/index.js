@@ -77,6 +77,7 @@ function addMapMarker(newStation) {
 function addListenerToMapMarker(infowindow, newStation, mapMarker) {
   google.maps.event.addListener(mapMarker, 'click', (function(mapMarker) {
     return function() {
+		
       //Afficher la bulle d'informations.
       /*var content = '<h5>Nom de la station : ' + newStation.nom + '</h5>' + 
       '<h5>Vélos diponibles : ' + newStation.veloDisponible + '</h5>' +
@@ -87,9 +88,10 @@ function addListenerToMapMarker(infowindow, newStation, mapMarker) {
       //Faire 'bounce' le marker une fois.
       mapMarker.setAnimation(google.maps.Animation.BOUNCE);
       setTimeout(function(){ mapMarker.setAnimation(null); }, 750);
-	  //actualiseTable(dict[newStation]);
-	  alert("The paragraph was clicked. " +);
 	  
+	  //lorsque on fait click sur le marqueur l'information est actualise
+	  actualiseTable(newStation.nom);
+
     }
   })(mapMarker));
 }
