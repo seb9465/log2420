@@ -133,6 +133,7 @@ function initAutoComplete(stations) {
 	select: function( event, ui ) {
 					
 					actualiseTable(ui.item.value);
+					mapGoogle.setCenter( { lat: dict[ui.item.value].latitude, lng: dict[ui.item.value].longitude } );
                }
   });
 };
@@ -192,17 +193,6 @@ function actualiseTable(currentStation) {
 
 }
 
-// Sets the map on all markers in the array.
-function setMapOnAll(map) {
-    for (var i = 0; i < markers.length; i++) {
-       markers[i].setMap(map);
-       }
-    }
-
-      // Removes the markers from the map, but keeps them in the array.
-function clearMarkers() {
-        setMapOnAll(null);
-      }
   
 	  
 function changeIconMarker(ltnLng){
@@ -210,12 +200,11 @@ function changeIconMarker(ltnLng){
 	var icon = {
   url: "/assets/markerBlue.png", // url,
   size: new google.maps.Size(50, 50),
-  scaledSize: new google.maps.Size(22, 40)
+  scaledSize: new google.maps.Size(22, 40),
+  anchor: new google.maps.Point(11, 40)
 };
 	
   markers[ltnLng].setIcon(icon);
-  mapGoogle.setCenter(ltnLng);
-  
  
 }
 
