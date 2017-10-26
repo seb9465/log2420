@@ -124,16 +124,46 @@ function initAutoComplete(stations) {
     minLength : 0,
     source : stations,
     //, success : ...
-	/* traitement de leveniment select de l'autocomplete */
+	/* traitement de l'eveniment select de l'autocomplete */
 	select: function( event, ui ) {
+					
+					/*actualiser le contenu du tableau*/
 					document.getElementById("idStation").innerHTML = dict[ui.item.value].id;
-					document.getElementById("velosDisponibles").innerHTML = dict[ui.item.value].veloDisponible;
+					document.getElementById("velosDisponibles").innerHTML = dict[ui.item.value].veloDisponible;	
 					document.getElementById("bloquee").innerHTML = dict[ui.item.value].etatBloque;
 					document.getElementById("bornesDisponibles").innerHTML = dict[ui.item.value].borneDisponible;
 					document.getElementById("suspendue").innerHTML = dict[ui.item.value].etatSuspendu;
 					document.getElementById("velosIndisponibles").innerHTML = dict[ui.item.value].velosIndisponibles;
 					document.getElementById("horsService").innerHTML = dict[ui.item.value].horsService;
 					document.getElementById("bornesIndisponibles").innerHTML = dict[ui.item.value].bornesIndisponibles;
+					
+					document.getElementById("localisationSelectee").innerHTML = ui.item.value;
+					
+					/*changer la couleur du icon selon la valeur du conteneur*/
+					if(dict[ui.item.value].veloDisponible < 1)
+						$('#velosDisponibles').removeClass('progress-bar-success').addClass('progress-bar-danger ');
+					else
+						$('#velosDisponibles').removeClass('progress-bar-danger').addClass('progress-bar-success ');
+					
+					if(dict[ui.item.value].etatBloque == 'Oui')
+						$('#bloquee').removeClass('progress-bar-success').addClass('progress-bar-danger ');
+					else
+						$('#bloquee').removeClass('progress-bar-danger').addClass('progress-bar-success ');
+					
+					if(dict[ui.item.value].etatSuspendu == 'Oui')
+						$('#suspendue').removeClass('progress-bar-success').addClass('progress-bar-danger ');	
+					else
+						$('#suspendue').removeClass('progress-bar-danger').addClass('progress-bar-success ');
+					
+					if(dict[ui.item.value].horsService == 'Oui')
+						$('#horsService').removeClass('progress-bar-success').addClass('progress-bar-danger ');	
+					else
+						$('#horsService').removeClass('progress-bar-danger').addClass('progress-bar-success ');
+					
+					if(dict[ui.item.value].borneDisponible < 1)
+						$('#bornesDisponibles').removeClass('progress-bar-success').addClass('progress-bar-danger ');
+					else
+						$('#bornesDisponibles').removeClass('progress-bar-danger').addClass('progress-bar-success ');
                }
   });
 };

@@ -24,7 +24,7 @@ body {
     /*overflow:hidden;*/
 }
 
-#autocomplete, #localisationTitre {
+#autocomplete, #localisationTitre, #localisationSelectee {
     width:30vw;
     margin-left:5vw;
 }
@@ -39,10 +39,4 @@ body {
     margin-right: 3vw;
 }
 
-#colonneDroite .btn-round-xs{
-border-radius: 11px;
-padding-left: 8px;
-padding-right: 8px;
-background-color: grey;
-color:white;
-}
+

@@ -68,8 +68,27 @@
                     <tr>        <!-- Une ligne -->
                         <td id="colonneGauche">    <!-- Portion de gauche au dessus de la map. -->
                             <!-- Autocomplete -->
-                            <input id="autocomplete" placeholder="Nom de la station">
-                            <h2 id="localisationTitre">Localisation :</h2>
+                            
+                            
+							
+					
+							
+							<table class="table table-striped">
+							  <thead>
+								<!-- ENDROIT OU METTRE LE TITRE DU TABLEAU GAUCHE AU BESOIN -->	
+							  </thead>
+							  <tbody>
+									<tr>
+										<input id="autocomplete" placeholder="Nom de la station">
+									</tr>
+									<tr>
+										<h3 id="localisationTitre">Localisation :</h3>
+									</tr>
+									<tr>
+										<h4 id="localisationSelectee"><h4>
+									</tr>
+							  </tbody>
+							</table> 
                         </td>
                         
                         <td id="colonneDroite">    <!-- Portion de droite au dessus de la map. -->
@@ -83,41 +102,41 @@
 									<tr>
 									  <td>ID Station</td>
 									  <td >
-										<button id="idStation" class="btn btn-round-xs btn-xs">-</button>										
+										<span  id="idStation" class="badge" >-</span>										
 									  </td>
 									  <td>Vélos disponibles</td>
 									   <td >
-										<button id="velosDisponibles" class="btn btn-round-xs btn-xs">-</button>										
+										<span id="velosDisponibles" class="badge">-</span>										
 									  </td>
 									</tr>
 									<tr>
 									  <td>Bloquée</td>
 									  <td>
-										<button id="bloquee" class="btn btn-round-xs btn-xs">-</button>
+										<span id="bloquee" class="badge">-</span>
 									  </td>
 									  <td>Bornes disponibles</td>
 									   <td >
-										<button id="bornesDisponibles"class="btn btn-round-xs btn-xs">-</button>										
+										<span id="bornesDisponibles" class="badge">-</span>										
 									  </td>
 									</tr>
 									<tr>
 									  <td>Suspendue</td>
 									   <td>
-										<button id="suspendue"class="btn btn-round-xs btn-xs">-</button>	
+										<span id="suspendue" class="badge">-</span>	
 									  </td>
 									  <td>Vélos indisponibles</td>
 									   <td >
-										<button id="velosIndisponibles"class="btn btn-round-xs btn-xs">-</button>										
+										<span id="velosIndisponibles" class="badge">-</span>										
 									  </td>
 									</tr>
 									<tr>
 									  <td>Hors Service</td>
 									   <td>
-										<button id="horsService"class="btn btn-round-xs btn-xs">-</button>
+										<span id="horsService" class="badge">-</span>
 									  </td>
 									  <td>Bornes indisponibles</td>	
 									   <td >
-										<button id="bornesIndisponibles" class="btn btn-round-xs btn-xs">-</button>										
+										<span id="bornesIndisponibles" class="badge">-</span>										
 									  </td>								  
 									</tr>
 							  </tbody>
