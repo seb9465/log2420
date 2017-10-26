@@ -1,6 +1,7 @@
 var infosDatatable = [];
 var nomStations = [];
 var coordonnees = [];
+let dict = {};
 var datatable;
 var mapGoogle;
 
@@ -20,7 +21,7 @@ var mapGoogle;
       createEmptyDataTable();
       initEmptyMap();
 
-      let dict = {};
+      //let dict = {};
       let dictNom = [];
       var mapMarker;
       var infowindow = new google.maps.InfoWindow();
@@ -31,12 +32,17 @@ var mapGoogle;
           'nom' : station.s,
           'latitude' : station.la,
           'longitude' : station.lo,
+		  'horsService':station.m  == true ? "Oui" : "Non",
           'etatBloque' : station.b == true ? "Oui" : "Non",
           'etatSuspendu' : station.su == true ? "Oui" : "Non",
           'veloDisponible' : station.ba,
-          'borneDisponible' : station.da
+          'borneDisponible' : station.da,
+		  'velosIndisponibles' : station.bx,
+		  'bornesIndisponibles' : station.dx,
+		  
         }
         dict[newStation.nom] = newStation;
+		dictNom.push(newStation.nom);
         
         datatable.row.add(newStation).draw();
         mapMarker = addMapMarker(newStation);
@@ -116,18 +122,19 @@ function initEmptyMap() {
 function initAutoComplete(stations) {
   $( "#autocomplete" ).autocomplete({
     minLength : 0,
-    source : stations
+    source : stations,
     //, success : ...
-	
-
+	/* traitement de leveniment select de l'autocomplete */
+	select: function( event, ui ) {
+					document.getElementById("idStation").innerHTML = dict[ui.item.value].id;
+					document.getElementById("velosDisponibles").innerHTML = dict[ui.item.value].veloDisponible;
+					document.getElementById("bloquee").innerHTML = dict[ui.item.value].etatBloque;
+					document.getElementById("bornesDisponibles").innerHTML = dict[ui.item.value].borneDisponible;
+					document.getElementById("suspendue").innerHTML = dict[ui.item.value].etatSuspendu;
+					document.getElementById("velosIndisponibles").innerHTML = dict[ui.item.value].velosIndisponibles;
+					document.getElementById("horsService").innerHTML = dict[ui.item.value].horsService;
+					document.getElementById("bornesIndisponibles").innerHTML = dict[ui.item.value].bornesIndisponibles;
+               }
   });
 };
 
-$( "#autocomplete" ).on( "autocompleteselect", function( event, ui ) {
-	
-} );
-//function afficherInfoStation(station){
-	
-//};
-
-//document.getElementById('autocomplete').addEventListener("click", function(){afficherInfoStation(station)});
