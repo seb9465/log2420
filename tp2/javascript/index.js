@@ -47,14 +47,7 @@ var mapGoogle;
         datatable.row.add(newStation).draw();
         mapMarker = addMapMarker(newStation);
         addListenerToMapMarker(infowindow, newStation, mapMarker);
-        
-        mapMarker = new google.maps.Marker({
-          position: new google.maps.LatLng(newStation.latitude, newStation.longitude),   //position (obligatoire) : emplacement du marqueur (latitude, longitude).
-          map: mapGoogle,                                                                 //map (facultatif) : Spécifie l'objet Map sur lequel placer le marqueur.
-          title: newStation.nom,                                                 //title (facultatif) : On mouse over, affiche un tooltip.            
-          animation: google.maps.Animation.DROP,                                    //animation (facultatif) : Animation du marker.
-          draggable: false,                                                         //draggable (falcultatif) : Empeche l'utilisateur de déplacer le marker.                                                          
-        }); 
+                                                        
       });
       initAutoComplete(dictNom);
     } else {
