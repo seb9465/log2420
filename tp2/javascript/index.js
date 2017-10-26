@@ -1,10 +1,13 @@
 var infosDatatable = [];
 var nomStations = [];
 var coordonnees = [];
-var markers = [];
+var markers = {};
 let dict = {};
 var datatable;
 var mapGoogle;
+var prevousMarker;		// garde le nome du dernier marqueur selectione/modifie
+var firstRun = true;
+
 
 
 /**
@@ -65,7 +68,9 @@ function addMapMarker(newStation) {
     animation: google.maps.Animation.DROP,                                          //animation (facultatif) : Animation du marker.
     draggable: false,                                                               //draggable (falcultatif) : Empeche l'utilisateur de déplacer le marker.                                                          
   });
-  markers.push(mapMarker);
+  var latLng = new google.maps.LatLng(newStation.latitude, newStation.longitude);
+  markers[latLng] = mapMarker;														//creer le tableau avec des cles "latitueLongitude" 
+
   return mapMarker;
 }
 
@@ -159,7 +164,18 @@ function initAutoComplete(stations) {
 						$('#bornesDisponibles').removeClass('progress-bar-success').addClass('progress-bar-danger ');
 					else
 						$('#bornesDisponibles').removeClass('progress-bar-danger').addClass('progress-bar-success ');
-					clearMarkers();
+					/*modifier l'icon de la station selectionee*/
+					
+					if(firstRun)
+						firstRun = false;
+					else{
+						var tmpLatLng = new google.maps.LatLng(dict[prevousMarker].latitude, dict[prevousMarker].longitude);			// revenir a l'icon par default
+						markers[tmpLatLng].setIcon();
+					}
+									
+					prevousMarker = ui.item.value;
+					var ltnLng = new google.maps.LatLng(dict[ui.item.value].latitude, dict[ui.item.value].longitude)
+					changeIconMarker(ltnLng);
                }
   });
 };
@@ -176,3 +192,35 @@ function setMapOnAll(map) {
 function clearMarkers() {
         setMapOnAll(null);
       }
+  
+	  
+function changeIconMarker(ltnLng){
+ 
+	var icon = {
+  url: "/assets/markerBlue.png", // url,
+  size: new google.maps.Size(50, 50),
+  scaledSize: new google.maps.Size(22, 40)
+};
+	
+  markers[ltnLng].setIcon(icon);
+  mapGoogle.setCenter(ltnLng);
+  
+ 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
