@@ -78,15 +78,18 @@ function addListenerToMapMarker(infowindow, newStation, mapMarker) {
   google.maps.event.addListener(mapMarker, 'click', (function(mapMarker) {
     return function() {
       //Afficher la bulle d'informations.
-      var content = '<h5>Nom de la station : ' + newStation.nom + '</h5>' + 
+      /*var content = '<h5>Nom de la station : ' + newStation.nom + '</h5>' + 
       '<h5>Vélos diponibles : ' + newStation.veloDisponible + '</h5>' +
       '<h5>Bornes disponibles : ' + newStation.borneDisponible + '</h5>';
       infowindow.setContent(content);
-      infowindow.open(mapGoogle,mapMarker);
+      infowindow.open(mapGoogle,mapMarker);*/
 
       //Faire 'bounce' le marker une fois.
       mapMarker.setAnimation(google.maps.Animation.BOUNCE);
       setTimeout(function(){ mapMarker.setAnimation(null); }, 750);
+	  //actualiseTable(dict[newStation]);
+	  alert("The paragraph was clicked. " +);
+	  
     }
   })(mapMarker));
 }
@@ -127,40 +130,48 @@ function initAutoComplete(stations) {
 	/* traitement de l'eveniment select de l'autocomplete */
 	select: function( event, ui ) {
 					
+					actualiseTable(ui.item.value);
+               }
+  });
+};
+
+function actualiseTable(currentStation) {
+	
+	
 					/*actualiser le contenu du tableau*/
-					document.getElementById("idStation").innerHTML = dict[ui.item.value].id;
-					document.getElementById("velosDisponibles").innerHTML = dict[ui.item.value].veloDisponible;	
-					document.getElementById("bloquee").innerHTML = dict[ui.item.value].etatBloque;
-					document.getElementById("bornesDisponibles").innerHTML = dict[ui.item.value].borneDisponible;
-					document.getElementById("suspendue").innerHTML = dict[ui.item.value].etatSuspendu;
-					document.getElementById("velosIndisponibles").innerHTML = dict[ui.item.value].velosIndisponibles;
-					document.getElementById("horsService").innerHTML = dict[ui.item.value].horsService;
-					document.getElementById("bornesIndisponibles").innerHTML = dict[ui.item.value].bornesIndisponibles;
+					document.getElementById("idStation").innerHTML = dict[currentStation].id;
+					document.getElementById("velosDisponibles").innerHTML = dict[currentStation].veloDisponible;	
+					document.getElementById("bloquee").innerHTML = dict[currentStation].etatBloque;
+					document.getElementById("bornesDisponibles").innerHTML = dict[currentStation].borneDisponible;
+					document.getElementById("suspendue").innerHTML = dict[currentStation].etatSuspendu;
+					document.getElementById("velosIndisponibles").innerHTML = dict[currentStation].velosIndisponibles;
+					document.getElementById("horsService").innerHTML = dict[currentStation].horsService;
+					document.getElementById("bornesIndisponibles").innerHTML = dict[currentStation].bornesIndisponibles;
 					
-					document.getElementById("localisationSelectee").innerHTML = ui.item.value;
+					document.getElementById("localisationSelectee").innerHTML = currentStation;
 					
 					/*changer la couleur du icon selon la valeur du conteneur*/
-					if(dict[ui.item.value].veloDisponible < 1)
+					if(dict[currentStation].veloDisponible < 1)
 						$('#velosDisponibles').removeClass('progress-bar-success').addClass('progress-bar-danger ');
 					else
 						$('#velosDisponibles').removeClass('progress-bar-danger').addClass('progress-bar-success ');
 					
-					if(dict[ui.item.value].etatBloque == 'Oui')
+					if(dict[currentStation].etatBloque == 'Oui')
 						$('#bloquee').removeClass('progress-bar-success').addClass('progress-bar-danger ');
 					else
 						$('#bloquee').removeClass('progress-bar-danger').addClass('progress-bar-success ');
 					
-					if(dict[ui.item.value].etatSuspendu == 'Oui')
+					if(dict[currentStation].etatSuspendu == 'Oui')
 						$('#suspendue').removeClass('progress-bar-success').addClass('progress-bar-danger ');	
 					else
 						$('#suspendue').removeClass('progress-bar-danger').addClass('progress-bar-success ');
 					
-					if(dict[ui.item.value].horsService == 'Oui')
+					if(dict[currentStation].horsService == 'Oui')
 						$('#horsService').removeClass('progress-bar-success').addClass('progress-bar-danger ');	
 					else
 						$('#horsService').removeClass('progress-bar-danger').addClass('progress-bar-success ');
 					
-					if(dict[ui.item.value].borneDisponible < 1)
+					if(dict[currentStation].borneDisponible < 1)
 						$('#bornesDisponibles').removeClass('progress-bar-success').addClass('progress-bar-danger ');
 					else
 						$('#bornesDisponibles').removeClass('progress-bar-danger').addClass('progress-bar-success ');
@@ -173,13 +184,11 @@ function initAutoComplete(stations) {
 						markers[tmpLatLng].setIcon();
 					}
 									
-					prevousMarker = ui.item.value;
-					var ltnLng = new google.maps.LatLng(dict[ui.item.value].latitude, dict[ui.item.value].longitude)
+					prevousMarker = currentStation;
+					var ltnLng = new google.maps.LatLng(dict[currentStation].latitude, dict[currentStation].longitude)
 					changeIconMarker(ltnLng);
-               }
-  });
-};
 
+}
 
 // Sets the map on all markers in the array.
 function setMapOnAll(map) {
