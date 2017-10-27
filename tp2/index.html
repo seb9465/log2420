@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -6,6 +6,9 @@
     
     <!-- Link to our CSS file. -->
     <link rel="stylesheet" href="css/index.css">
+    <!-- Link for Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
     <!-- Latest compiled and minified CSS for BootStrap. -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -26,7 +29,7 @@
 </head>
 <body>
     <!-- Barre de naviguation (menu). -->
-	<nav class="navbar navbar-inverse">
+	<nav class="navbar navbar-inverse bg-primary ">
         <div class="container-fluid">
             <!-- Endroit pour insérer un logo ou le nom du site. -->
             <div class="navbar-header">
@@ -40,11 +43,9 @@
 
             <!-- Items du menu. -->
             <div class="collapse navbar-collapse" id="mainNavBar">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Accueil</a></li>
-                    <li><a href="#">Langue</a></li>
-                </ul>
-            </div>
+                <ul class="nav navbar-nav "><li ><a href="#"> Accueil </a></li></ul>
+                <ul class="nav navbar-nav pull-right "><li><a href="#"><i class="fa fa-globe fa-lg" aria-hidden="true"></i> </a></li></ul>
+</div>
         </div>
     </nav>
 
@@ -68,10 +69,6 @@
                     <tr>        <!-- Une ligne -->
                         <td id="colonneGauche">    <!-- Portion de gauche au dessus de la map. -->
                             <!-- Autocomplete -->
-                            
-                            
-							
-					
 							
 							<table class="table table-striped">
 							  <thead>
@@ -83,7 +80,7 @@
 									</tr>
 									<tr>
 										<h3 id="localisationTitre">Localisation :</h3>
-									</tr>
+   									</tr>
 									<tr>
 										<h4 id="localisationSelectee"><h4>
 									</tr>
