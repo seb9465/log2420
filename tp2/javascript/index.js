@@ -196,7 +196,6 @@ function actualiseTable(currentStation) {
   
 	  
 function changeIconMarker(ltnLng){
- 
 	var icon = {
   url: "/assets/markerBlue.png", // url,
   size: new google.maps.Size(50, 50),
