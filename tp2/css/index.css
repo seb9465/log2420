@@ -1,6 +1,6 @@
 #map {
     position : absolute;
-    height: 60vh;
+    height: 50vh;
     width: 100vw;
     bottom:0;
 }
@@ -34,4 +34,6 @@
     margin-right: 3vw;
 }
 
-
+#tabInfoVelo {
+    margin-top:1vh;
+}
