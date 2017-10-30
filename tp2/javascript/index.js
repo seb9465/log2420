@@ -8,8 +8,6 @@ var mapGoogle;
 var prevousMarker;		// garde le nome du dernier marqueur selectione/modifie
 var firstRun = true;
 
-
-
 /**
    * Fonction permettant d'aller récupérer les informations sur le site
    * contenant les informations sur les stations BIXI.
@@ -36,22 +34,20 @@ var firstRun = true;
           'nom' : station.s,
           'latitude' : station.la,
           'longitude' : station.lo,
-		  'horsService':station.m  == true ? "Oui" : "Non",
+		      'horsService':station.m  == true ? "Oui" : "Non",
           'etatBloque' : station.b == true ? "Oui" : "Non",
           'etatSuspendu' : station.su == true ? "Oui" : "Non",
           'veloDisponible' : station.ba,
           'borneDisponible' : station.da,
-		  'velosIndisponibles' : station.bx,
-		  'bornesIndisponibles' : station.dx,
-		  
+          'velosIndisponibles' : station.bx,
+          'bornesIndisponibles' : station.dx,
         }
         dict[newStation.nom] = newStation;
-		dictNom.push(newStation.nom);
+		    dictNom.push(newStation.nom);
         
         datatable.row.add(newStation).draw();
         mapMarker = addMapMarker(newStation);
-        addListenerToMapMarker(infowindow, newStation, mapMarker);
-                                                        
+        addListenerToMapMarker(infowindow, newStation, mapMarker); 
       });
       initAutoComplete(dictNom);
     } else {
@@ -128,20 +124,15 @@ function initAutoComplete(stations) {
   $( "#autocomplete" ).autocomplete({
     minLength : 0,
     source : stations,
-    //, success : ...
-	/* traitement de l'eveniment select de l'autocomplete */
-	select: function( event, ui ) {
-					
-					actualiseTable(ui.item.value);
-					mapGoogle.setCenter( { lat: dict[ui.item.value].latitude, lng: dict[ui.item.value].longitude } );
-               }
+	  select: function( event, ui ) {
+      actualiseTable(ui.item.value);
+      mapGoogle.setCenter( { lat: dict[ui.item.value].latitude, lng: dict[ui.item.value].longitude } );
+    }
   });
 };
 
 function actualiseTable(currentStation) {
-	
-	
-					/*actualiser le contenu du tableau*/
+					/* Actualiser le contenu du tableau. */
 					document.getElementById("idStation").innerHTML = dict[currentStation].id;
 					document.getElementById("velosDisponibles").innerHTML = dict[currentStation].veloDisponible;	
 					document.getElementById("bloquee").innerHTML = dict[currentStation].etatBloque;
@@ -149,11 +140,11 @@ function actualiseTable(currentStation) {
 					document.getElementById("suspendue").innerHTML = dict[currentStation].etatSuspendu;
 					document.getElementById("velosIndisponibles").innerHTML = dict[currentStation].velosIndisponibles;
 					document.getElementById("horsService").innerHTML = dict[currentStation].horsService;
-					document.getElementById("bornesIndisponibles").innerHTML = dict[currentStation].bornesIndisponibles;
-					
+          document.getElementById("bornesIndisponibles").innerHTML = dict[currentStation].bornesIndisponibles;
+          /* Pour l'affichage du titre de la station sélectionnée. */
 					document.getElementById("localisationSelectee").innerHTML = currentStation;
 					
-					/*changer la couleur du icon selon la valeur du conteneur*/
+					/* Changer la couleur du icon selon la valeur du conteneur. */
 					if(dict[currentStation].veloDisponible < 1)
 						$('#velosDisponibles').removeClass('progress-bar-success').addClass('progress-bar-danger ');
 					else
@@ -177,9 +168,9 @@ function actualiseTable(currentStation) {
 					if(dict[currentStation].borneDisponible < 1)
 						$('#bornesDisponibles').removeClass('progress-bar-success').addClass('progress-bar-danger ');
 					else
-						$('#bornesDisponibles').removeClass('progress-bar-danger').addClass('progress-bar-success ');
-					/*modifier l'icon de la station selectionee*/
-					
+            $('#bornesDisponibles').removeClass('progress-bar-danger').addClass('progress-bar-success ');
+            
+					/* Modifier l'icone de la station selectionee. */
 					if(firstRun)
 						firstRun = false;
 					else{

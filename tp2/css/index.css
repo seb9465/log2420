@@ -1,6 +1,6 @@
 #map {
     position : absolute;
-    height: 45vh;
+    height: 60vh;
     width: 100vw;
     bottom:0;
 }
@@ -16,26 +16,18 @@
     border: none;
 }
 
-
 #secondTab {
     margin-left:1.5vh;
 }
 
-
-body {
-    /*overflow:hidden;*/
-
-}
-
 #autocomplete, #localisationTitre, #localisationSelectee {
-    width:30vw;
-    margin-left:5vw;
+    width:25vw;
 }
 
-#colonneGauche {
-    width:50vw;
+#autocomplete {
+    margin-top:3vh;
+    margin-bottom:2vh;
 }
-
 
 #listeStations {
     margin-left : 3vw;

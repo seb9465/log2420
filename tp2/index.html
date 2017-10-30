@@ -62,85 +62,61 @@
             <!-- ENDROIT OU METTRE LA PORTION DE CODE POUR LA CARTE DES STATIONS -->
 	
             <!-- TODO / Deux colonnes au haut de la MAP. -->
-            <table class="table table-bordered">
-                <tbody>
-                    <tr>        <!-- Une ligne -->
-                        <td id="colonneGauche">    <!-- Portion de gauche au dessus de la map. -->
-                            <!-- Autocomplete -->
-							
-							<table class="table table-striped">
+                <div class = "container">
+                    <div class="row">
+                        <div class="col-sm-6">    <!-- Portion de gauche au dessus de la map. -->
+							<table class="table table-responsive">
 							  <thead>
 								<!-- ENDROIT OU METTRE LE TITRE DU TABLEAU GAUCHE AU BESOIN -->	
 							  </thead>
 							  <tbody>
 									<tr>
+                                        <!-- Autocomplete -->
 										<input id="autocomplete" placeholder="Nom de la station">
 									</tr>
 									<tr>
-										<h3 id="localisationTitre">Localisation :</h3>
+                                        <td> <h3 id="localisationTitre">Localisation :</h3> <h4 id="localisationSelectee"></h4> </td>
    									</tr>
-									<tr>
-										<h4 id="localisationSelectee"><h4>
-									</tr>
 							  </tbody>
-							</table> 
-                        </td>
+							</table>
+                        </div>
                         
-                        <td id="colonneDroite">    <!-- Portion de droite au dessus de la map. -->
-                           <table class="table table-striped">
-							  <thead>
-								<tr>
-								  <h4>État de la station de vélos</h4>
-								</tr>
-							  </thead>
-							  <tbody>
+                        <div class ="col-sm-6">    <!-- Portion de droite au dessus de la map. -->
+                            <table class="table table-striped">
+							    <thead>
+								    <tr> <h4>État de la station de vélos</h4> </tr>
+							    </thead>
+							    <tbody>
 									<tr>
-									  <td>ID Station</td>
-									  <td >
-										<span  id="idStation" class="badge" >-</span>										
-									  </td>
-									  <td>Vélos disponibles</td>
-									   <td >
-										<span id="velosDisponibles" class="badge">-</span>										
-									  </td>
+									    <td>ID Station</td>
+									    <td > <span  id="idStation" class="badge" >-</span> </td>
+									    <td>Vélos disponibles</td>
+									    <td > <span id="velosDisponibles" class="badge">-</span> </td>
 									</tr>
 									<tr>
-									  <td>Bloquée</td>
-									  <td>
-										<span id="bloquee" class="badge">-</span>
-									  </td>
-									  <td>Bornes disponibles</td>
-									   <td >
-										<span id="bornesDisponibles" class="badge">-</span>										
-									  </td>
+                                        <td>Bloquée</td>
+                                        <td> <span id="bloquee" class="badge">-</span> </td>
+                                        <td>Bornes disponibles</td>
+									    <td > <span id="bornesDisponibles" class="badge">-</span> </td>
 									</tr>
 									<tr>
-									  <td>Suspendue</td>
-									   <td>
-										<span id="suspendue" class="badge">-</span>	
-									  </td>
-									  <td>Vélos indisponibles</td>
-									   <td >
-										<span id="velosIndisponibles" class="badge">-</span>										
-									  </td>
+                                        <td>Suspendue</td>
+                                        <td> <span id="suspendue" class="badge">-</span> </td>
+                                        <td>Vélos indisponibles</td>
+                                        <td> <span id="velosIndisponibles" class="badge">-</span> </td>
 									</tr>
 									<tr>
-									  <td>Hors Service</td>
-									   <td>
-										<span id="horsService" class="badge">-</span>
-									  </td>
-									  <td>Bornes indisponibles</td>	
-									   <td >
-										<span id="bornesIndisponibles" class="badge">-</span>										
-									  </td>								  
+                                        <td>Hors Service</td>
+                                        <td> <span id="horsService" class="badge">-</span> </td>
+                                        <td>Bornes indisponibles</td>	
+                                        <td> <span id="bornesIndisponibles" class="badge">-</span> </td>								  
 									</tr>
-							  </tbody>
+							    </tbody>
 							</table> 
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            
+                        </div>
+                    </div>
+                </div>
+
             <!-- Pour la portion Google Map -->
             <div id="map"></div>
             <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUcuAVxaXeDLmc8qLm8uvpHhUW5Waw5zQ"></script>
@@ -150,8 +126,6 @@
         <div id="listeStations" class="tab-pane fade">
             <!-- ENDROIT OU METTRE LA PORTION DE CODE POUR LA LISTE DES STATIONS -->
             <h4>État de toutes les stations de vélos</h4>
-            <!-- Options pouvant être ajouté à la classe : compact , hover , order-column ,
-                 row-border-->
             <table id="example" class="stripe hover dt-body-center" width="100%"></table>
         </div>
     </div>
