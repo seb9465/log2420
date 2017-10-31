@@ -1,135 +1,122 @@
 ﻿<!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <!-- Link to our CSS file. -->
-    <link rel="stylesheet" href="css/index.css">
-    <!-- Link for Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- Link to our CSS file. -->
+        <link rel="stylesheet" href="css/index.css">
 
+        <!-- Link for Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!-- Latest compiled and minified CSS for BootStrap. -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- Latest compiled and minified CSS for BootStrap. -->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <!-- Pour JQuerry / Autocomplete. -->
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
-    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <!-- Pour JQuerry / Autocomplete. -->
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-    <!-- For DataTables. -->
-    <link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+        <!-- For DataTables. -->
+        <link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+        <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
-    <title>Vélo Montréal</title>
-    
-</head>
-<body>
-    <!-- Barre de naviguation (menu). -->
-	<nav class="navbar navbar-inverse bg-primary ">
-        <div class="container-fluid">
-            <!-- Endroit pour insérer un logo ou le nom du site. -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNavBar">
-                    
-                </button>
-                <a href="#" class="navbar-brand">Vélo Montréal</a>
+        <title>Vélo Montréal</title>
+    </head>
+    <body>
+        <!-- Barre de naviguation (menu). -->
+        <nav class="navbar navbar-inverse bg-primary ">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNavBar"> </button>
+                    <a href="#" class="navbar-brand">Vélo Montréal</a>
+                </div>
+                <!-- Items du menu. -->
+                <div class="collapse navbar-collapse" id="mainNavBar">
+                    <ul class="nav navbar-nav" id="btnAccueil"><li><a href="#"> Accueil </a></li></ul>
+                    <ul class="nav navbar-nav pull-right "><li><a href="#"><i class="fa fa-globe fa-lg" aria-hidden="true"></i> </a></li></ul>
+                </div>
             </div>
+        </nav>
 
-            <!-- Items du menu. -->
-            <div class="collapse navbar-collapse" id="mainNavBar">
-                <ul class="nav navbar-nav "><li ><a href="#"> Accueil </a></li></ul>
-                <ul class="nav navbar-nav pull-right "><li><a href="#"><i class="fa fa-globe fa-lg" aria-hidden="true"></i> </a></li></ul>
-</div>
+        <div class="container">
+            <ul class="nav nav-tabs">
+                <!-- Les deux onglets. -->
+                <li class="active"><a data-toggle="tab" href="#carteStations">Carte des stations</a></li>
+                <li><a id="secondTab" data-toggle="tab" href="#listeStations">Liste des stations</a></li>
+            </ul>
         </div>
-    </nav>
 
-    <div class="container">
-        <ul class="nav nav-tabs">
-            <!-- Les deux onglets. -->
-            <li class="active"><a data-toggle="tab" href="#carteStations">Carte des stations</a></li>
-            <li><a id="secondTab" data-toggle="tab" href="#listeStations">Liste des stations</a></li>
-        </ul>
-    </div>
-
-    <div class="tab-content">
-        <!-- Content de l'onglet Carte des stations. -->
-        <div id="carteStations" class="tab-pane fade in active">
-
-            <!-- ENDROIT OU METTRE LA PORTION DE CODE POUR LA CARTE DES STATIONS -->
-	
-            <!-- TODO / Deux colonnes au haut de la MAP. -->
+        <div class="tab-content">
+            <!-- Content de l'onglet Carte des stations. -->
+            <div id="carteStations" class="tab-pane fade in active">
+                <!-- ENDROIT OU METTRE LA PORTION DE CODE POUR LA CARTE DES STATIONS -->
                 <div class = "container">
                     <div class="row">
                         <div class="col-sm-6">    <!-- Portion de gauche au dessus de la map. -->
-							<table class="table table-responsive">
-							  <thead>
-								<!-- ENDROIT OU METTRE LE TITRE DU TABLEAU GAUCHE AU BESOIN -->	
-							  </thead>
-							  <tbody>
-									<tr>
+                            <table class="table table-responsive">
+                                <tbody>
+                                    <tr>
                                         <!-- Autocomplete -->
-										<input id="autocomplete" placeholder="Nom de la station">
-									</tr>
-									<tr>
+                                        <input id="autocomplete" placeholder="Nom de la station">
+                                    </tr>
+                                    <tr>
                                         <td> <h3 id="localisationTitre">Localisation :</h3> <h4 id="localisationSelectee"></h4> </td>
-   									</tr>
-							  </tbody>
-							</table>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                         
                         <div class ="col-sm-6" id="tabInfoVelo">    <!-- Portion de droite au dessus de la map. -->
                             <table class="table table-striped">
-							    <thead>
-								    <tr> <h4>État de la station de vélos</h4> </tr>
-							    </thead>
-							    <tbody>
-									<tr>
-									    <td>ID Station</td>
-									    <td > <span  id="idStation" class="badge" >-</span> </td>
-									    <td>Vélos disponibles</td>
-									    <td > <span id="velosDisponibles" class="badge">-</span> </td>
-									</tr>
-									<tr>
+                                <thead>
+                                    <tr> <h4>État de la station de vélos</h4> </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>ID Station</td>
+                                        <td > <span  id="idStation" class="badge" >-</span> </td>
+                                        <td>Vélos disponibles</td>
+                                        <td > <span id="velosDisponibles" class="badge">-</span> </td>
+                                    </tr>
+                                    <tr>
                                         <td>Bloquée</td>
                                         <td> <span id="bloquee" class="badge">-</span> </td>
                                         <td>Bornes disponibles</td>
-									    <td > <span id="bornesDisponibles" class="badge">-</span> </td>
-									</tr>
-									<tr>
+                                        <td > <span id="bornesDisponibles" class="badge">-</span> </td>
+                                    </tr>
+                                    <tr>
                                         <td>Suspendue</td>
                                         <td> <span id="suspendue" class="badge">-</span> </td>
                                         <td>Vélos indisponibles</td>
                                         <td> <span id="velosIndisponibles" class="badge">-</span> </td>
-									</tr>
-									<tr>
+                                    </tr>
+                                    <tr>
                                         <td>Hors Service</td>
                                         <td> <span id="horsService" class="badge">-</span> </td>
                                         <td>Bornes indisponibles</td>	
                                         <td> <span id="bornesIndisponibles" class="badge">-</span> </td>								  
-									</tr>
-							    </tbody>
-							</table> 
+                                    </tr>
+                                </tbody>
+                            </table> 
                         </div>
                     </div>
                 </div>
 
-            <!-- Pour la portion Google Map -->
-            <div id="map"></div>
-            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUcuAVxaXeDLmc8qLm8uvpHhUW5Waw5zQ"></script>
-        </div>
+                <!-- Pour la portion Google Map -->
+                <div id="map"></div>
+                <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUcuAVxaXeDLmc8qLm8uvpHhUW5Waw5zQ"></script>
+            </div>
 
-        <!-- Contenu de l'onglet Liste des stations. -->
-        <div id="listeStations" class="tab-pane fade">
-            <!-- ENDROIT OU METTRE LA PORTION DE CODE POUR LA LISTE DES STATIONS -->
-            <h4>État de toutes les stations de vélos</h4>
-            <table id="example" class="stripe hover dt-body-center" width="100%"></table>
+            <!-- Contenu de l'onglet Liste des stations. -->
+            <div id="listeStations" class="tab-pane fade">
+                <h4>État de toutes les stations de vélos</h4>
+                <table id="tableauDeDonnees" class="stripe hover dt-body-center" width="100%"></table>
+            </div>
         </div>
-    </div>
-
-    <script type = "text/javascript" src="javascript/index.js"> </script>
-</body>
+        <script type = "text/javascript" src="javascript/index.js"> </script>
+    </body>
 </html>
