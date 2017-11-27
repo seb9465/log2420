@@ -22,7 +22,7 @@
   });
   $("#thermostat").slider({
     change: function(event, ui) {
-      $("#tdValeurThermostat").text( ui.value );
+        $("#tdValeurThermostat").text(ui.value);
     }
   });
 });
@@ -42,5 +42,5 @@
         });
     $( "#amount" ).val( $( "#slider-vertical" ).slider( "value" ) );
   } );
-/*************************** Fin Slider **********************/
+    /*************************** Fin Slider **********************/
 
