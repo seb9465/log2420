@@ -44,3 +44,11 @@
   } );
     /*************************** Fin Slider **********************/
 
+
+
+
+/**
+ * update : changement de style .
+ * callback : variables qui doivent être prise en compte.
+ * addObserver : (update).
+ */
