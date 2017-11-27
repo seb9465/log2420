@@ -1,14 +1,14 @@
 /* Extrait les valeurs produites dans la page Web et par le simulateur
- * et déclanche l'affichage des valeurs dans la page
+ * et dÃ©clanche l'affichage des valeurs dans la page
 */
 
 
 /*Code jquery qui affiche un glisseur dans le conteneur ayant
  *l'identifiant #thermostat, qui initalise sa position et ses valeurs
- *par défaut et qui affiche la valeur sélectionnée dans un conteneur
+ *par dï¿½faut et qui affiche la valeur sï¿½lectionnï¿½e dans un conteneur
  *ayant l'identifiant #valeurThermostat
  *
- *Pour démarrer le chauffage, il faut cliquer le curseur de défilement
+ *Pour dï¿½marrer le chauffage, il faut cliquer le curseur de dï¿½filement
  */
 /*********************Ne pas modifier***********************/
  $(document).ready(function() {

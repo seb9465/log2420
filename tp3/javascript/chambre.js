@@ -1,31 +1,31 @@
-/* Simule les variations de températures dans une pièce
+/* Simule les variations de tempï¿½ratures dans une piï¿½ce
  * @auteur: francois.lemieux@polymtl.ca 2010-07-26
 */
-var facteurChauffage = 0.01;  // échange calorifique avec le chauffage
-var facteurIsolation = 0.01;  // échange calorifique avec l'extérieur
-var temperatureChauffage = 70;    // température des calorifères
-var temperatureExterieure = 0;     // température extérieure
-var temperatureInterieure = 10;    // température intérieure par défaut
-var chauffage = false; // le chauffage n'est pas actif par défaut
-var temperatureThermostat = 20;       // le chauffage démarre à  moins de 20° par défaut
+var facteurChauffage = 0.01;  // ï¿½change calorifique avec le chauffage
+var facteurIsolation = 0.01;  // ï¿½change calorifique avec l'extï¿½rieur
+var temperatureChauffage = 70;    // tempï¿½rature des calorifï¿½res
+var temperatureExterieure = 0;     // tempï¿½rature extï¿½rieure
+var temperatureInterieure = 10;    // tempï¿½rature intï¿½rieure par dï¿½faut
+var chauffage = false; // le chauffage n'est pas actif par dï¿½faut
+var temperatureThermostat = 20;       // le chauffage dï¿½marre ï¿½  moins de 20ï¿½ par dï¿½faut
 
-var thermometreMax = 50      // Température maximale affichée par le thermomètre
-var thermometreMin = -50     // Température minimale affichée par le thermomètre
-var intervalleTemps = 1000;   // intervalle en milisecondes de lecture de la température
-var tailleThermometre = 300;    // Taille du thermomètre en pixels
-var positionThermometre = 50;     // Position du thermomètre par rapport au haut de la page
+var thermometreMax = 50      // Tempï¿½rature maximale affichï¿½e par le thermomï¿½tre
+var thermometreMin = -50     // Tempï¿½rature minimale affichï¿½e par le thermomï¿½tre
+var intervalleTemps = 1000;   // intervalle en milisecondes de lecture de la tempï¿½rature
+var tailleThermometre = 300;    // Taille du thermomï¿½tre en pixels
+var positionThermometre = 50;     // Position du thermomï¿½tre par rapport au haut de la page
 
-/*Extrait la température réglée par le thermostatr */
+/*Extrait la tempÃ©rature reglÃ©e par le thermostatr */
 function getTemperatureThermostat() {
     return document.getElementById("tdValeurThermostat").innerHTML;
 }
 
-/* Définit les échanges calorifiques selon les valeurs
- * de la temppérature extérieure, de l'isolation,
- * de la température intérieure, de la température fixée
- * par le thermostat et par l'efficacité du système
+/* Dï¿½finit les ï¿½changes calorifiques selon les valeurs
+ * de la temppï¿½rature extï¿½rieure, de l'isolation,
+ * de la tempï¿½rature intï¿½rieure, de la tempï¿½rature fixï¿½e
+ * par le thermostat et par l'efficacitï¿½ du systï¿½me
  * de chauffage.
- * Un "ticTac" correspond à  un échange calorifique
+ * Un "ticTac" correspond ï¿½  un ï¿½change calorifique
  */
 function ticTac() {
     temperatureInterieure += ((temperatureExterieure - temperatureInterieure) * facteurIsolation);
