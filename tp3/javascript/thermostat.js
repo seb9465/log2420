@@ -28,27 +28,40 @@
 });
 /*********************Ne pas modifier***********************/
 
-/*************************** Slider ************************/
-    $( function() {
-        $("#slider-vertical").slider({
-            orientation: "vertical",
-            range: "min",
-            min: 0,
-            max: 100,
-            value: 60,
-            slide: function (event, ui) {
-                $("#amount").val(ui.value);
-            }
-        });
-    $( "#amount" ).val( $( "#slider-vertical" ).slider( "value" ) );
-  } );
-    /*************************** Fin Slider **********************/
 
-
-
-
-/**
- * update : changement de style .
- * callback : variables qui doivent être prise en compte.
- * addObserver : (update).
- */
+$( function() {
+  var Observable = {
+    observers:[] ,
+    lastId: -1 ,
+    addObserver: function(observer) {
+      this.observers.push({callback:observer, id: ++this.lastId})
+    } ,
+    removeObserver: function(observer) {
+      var index = this.observers.indexOf(observer)
+      if(~index) {
+        this.observers.splice(index,1)
+      }
+    } ,
+    notifyObserver: function() {
+      this.observers.forEach(obs => obs.callback(temperatureInterieure, chauffage));
+    }
+  }
+  
+  
+  $(function(){
+    console.log("Ajout d'un observer.")
+    Observable.addObserver(updateAll)
+  });
+  
+  function updateAll(tempInterieur, chauf){
+    console.log("Temperature interieure: " + tempInterieur);
+    console.log("Chauffage actif ? " + chauf);
+    var pourcentage = tempInterieur + 50;
+    $("#barreAffichageTemperature").css('height', pourcentage+'%' );
+  }
+  
+  setInterval(() => {
+    ticTac();
+    Observable.notifyObserver();
+  }, intervalleTemps);  
+} );
