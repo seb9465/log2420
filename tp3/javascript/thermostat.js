@@ -54,10 +54,18 @@ $( function() {
   });
   
   function updateAll(tempInterieur, chauf){
-    console.log("Temperature interieure: " + tempInterieur);
-    console.log("Chauffage actif ? " + chauf);
     var pourcentage = tempInterieur + 50;
     $("#barreAffichageTemperature").css('height', pourcentage+'%' );
+    
+    document.getElementById("dataTempExt").innerHTML = temperatureExterieure;
+    
+    if(chauffage == true) {
+      document.getElementById("dataChauf").innerHTML = "Active";
+      document.getElementById("dataChauf").style.backgroundColor = "red";
+    } else {
+      document.getElementById("dataChauf").innerHTML = "Inactive";
+      document.getElementById("dataChauf").style.backgroundColor = "white";
+    }
   }
   
   setInterval(() => {
