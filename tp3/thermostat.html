@@ -17,25 +17,38 @@
       <label for="amount">Volume:</label>
       <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
     </p>
- 
-    <div id="slider-vertical" style="height:200px;"></div>
+
+    <div id="thermostat" style="height:200px;"></div>
 
     <div id="infosTemp">
       <table id="infosTempTable">
-        <tr id="infoChauf">
-          <td id="titreChauf">Chauffage :</td>
-          <td id="dataChauf">3</td>
+        <tr>      <!-- Ligne pour indiquer si le chauffage est en fonction ou non. -->
+          <td>
+            <a id="titreChauf">Chauffage :</a>
+          </td>
+          <td>
+            <a id="dataChauf"></a>
+          </td>
         </tr>
-        <tr id="infoExterieure">
-          <td id="titreTempExt">Température extérieure : </td>
-          <td id="dataTempExt">2</td>
+        <tr>      <!-- Ligne pour indiquer la température extérieure. -->
+          <td>
+            <a id="titreTempExt">Température extérieure :</a>
+          </td>
+          <td><a id="dataTempExt"></a></td>
         </tr>
-        <tr id="infoThermostat">
-          <td id="titreThermos">Thermostat :</td>
-          <td id="dataThermos">1</td>
+        <tr>      <!-- Ligne pour indiquer la tempéraure du thermostat. -->
+          <td>
+            <a id="titreThermos">Thermostat :</a>
+          </td>
+          <td>
+            <a id="tdValeurThermostat"></a>
+          </td>
         </tr>
       </table>
     </div>
+
+    <div id="slider-vertical" style="height:200px;"></div>
+
 
     <script type="text/javascript" src="javascript/thermostat.js"> </script>
 

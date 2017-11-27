@@ -1,8 +1,18 @@
 #infosTempTable {
-    padding-top:60px;
+    position:absolute;
+    top:50px;
+    left:20vw;
+    padding-top:50px;
 }
 
 #slider-vertical {
-    float:left;
-    margin-right:60px;
+    position:absolute;
+    top:50px;
+    left:20px;
+}
+
+#thermostat {
+    position:absolute;
+    top:50px;
+    right:5vw;
 }

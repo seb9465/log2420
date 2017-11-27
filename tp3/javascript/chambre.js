@@ -40,3 +40,13 @@ function ticTac() {
         chauffage = true;
     }
 }
+
+$(document).ready(function() {
+    if(chauffage == true) {
+        document.getElementById("dataChauf").innerHTML = "Active";
+        document.getElementById("dataChauf").style.backgroundColor = "red";
+    } else {
+        document.getElementById("dataChauf").innerHTML = "Inactive";
+        document.getElementById("dataChauf").style.backgroundColor = "white";
+    }
+});
