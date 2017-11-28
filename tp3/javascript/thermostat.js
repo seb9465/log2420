@@ -47,7 +47,7 @@ $( function() {
     }
   }
   
-  
+
   $(function(){
     console.log("Ajout d'un observer.")
     Observable.addObserver(updateAll)
@@ -65,7 +65,7 @@ $( function() {
       document.getElementById("dataChauf").style.backgroundColor = "red";
     } else {
       document.getElementById("dataChauf").innerHTML = "Inactive";
-      document.getElementById("dataChauf").style.backgroundColor = "white";
+      document.getElementById("dataChauf").style.backgroundColor = "lightgrey";
     }
   }
   
