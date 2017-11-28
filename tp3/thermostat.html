@@ -9,14 +9,11 @@
   <link rel="stylesheet" href="/css/thermostat.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body >
-
-     <div id="scaleThermostat">   
+    <div id="scaleThermostat">   
         <table class="table-borderless">
             <tbody>
                 <tr>
@@ -45,36 +42,37 @@
                 </tr>
             </tbody>
         </table>
-         </div>
-
+    </div>
 
     <div id="thermostat" style="height:210px;"></div>
 
     <div id="infosTemp">
-      <table id="infosTempTable">
-        <tr>      <!-- Ligne pour indiquer si le chauffage est en fonction ou non. -->
-          <td>
-            <span id="titreChauf">Chauffage :</span>
-          </td>
-          <td>
-            <span id="dataChauf"></span>
-          </td>
-        </tr>
-        <tr>      <!-- Ligne pour indiquer la température extérieure. -->
-          <td>
-            <span id="titreTempExt">Température extérieure :</span>
-          </td>
-          <td><span id="dataTempExt"></span></td>
-        </tr>
-        <tr>      <!-- Ligne pour indiquer la tempéraure du thermostat. -->
-          <td>
-            <span id="titreThermos">Thermostat :</span>
-          </td>
-          <td>
-            <span id="tdValeurThermostat"></span>
-          </td>
-        </tr>
-      </table>
+        <table id="infosTempTable">
+            <tr>      <!-- Ligne pour indiquer si le chauffage est en fonction ou non. -->
+                <td>
+                    <span id="titreChauf">Chauffage :</span>
+                </td>
+                <td>
+                    <span id="dataChauf"></span>
+                </td>
+            </tr>
+            <tr>      <!-- Ligne pour indiquer la température extérieure. -->
+                <td>
+                    <span id="titreTempExt">Température extérieure :</span>
+                </td>
+                <td>
+                    <span id="dataTempExt"></span>
+                </td>
+            </tr>
+            <tr>      <!-- Ligne pour indiquer la tempéraure du thermostat. -->
+                <td>
+                    <span id="titreThermos">Thermostat :</span>
+                </td>
+                <td>
+                    <span id="tdValeurThermostat"></span>
+                </td>
+            </tr>
+        </table>
     </div>
     <!-- costomiser vertical progress bar -->
     <div class="container">
@@ -84,13 +82,14 @@
             </div>
         </div>
     </div>
+    
     <span id="textThermometre">Thermomètre</span>
     <span id="textThermostat">Thermostat</span>
 
 
-        <script type="text/javascript" src="javascript/thermostat.js"> </script>
+        <script type="text/javascript" src="js/thermostat.js"> </script>
 
-        <script type="text/javascript" src="javascript/chambre.js"> </script>
+        <script type="text/javascript" src="js/chambre.js"> </script>
 
 </body>
 </html>
