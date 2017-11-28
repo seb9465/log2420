@@ -56,7 +56,7 @@ $( function() {
   function updateAll(tempInterieur, chauf){
     var pourcentage = tempInterieur + 50;
     $("#barreAffichageTemperature").css('height', pourcentage + '%');
-    $("#tempIndicator").text(parseInt(pourcentage, 10));
+    $("#tempIndicator").text(parseInt(pourcentage-50, 10));
 
     document.getElementById("dataTempExt").innerHTML = temperatureExterieure;
     
